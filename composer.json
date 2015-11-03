@@ -1,0 +1,19 @@
+{
+  "require": {
+    "composer/installers": "~1.0",
+    "drupal/core": "8.*",
+    "drupal/webprofiler": "8.*",
+    "drupal/composer_manager": "8.*"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/": ["type:drupal-core"]
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packagist.drupal-composer.org"
+    }
+  ]
+}
