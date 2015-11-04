@@ -18,7 +18,7 @@ nbproject
 .sass-cache
 
 # Ignore core and vendor when managing dependencies with Composer.
-core
+# core
 vendor
 composer.lock
 
