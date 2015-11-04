@@ -44,7 +44,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Drupal\\composer_manager\\Composer\\": "web/modules/contrib/composer_manager/src/Composer"
+            "Drupal\\composer_manager\\Composer\\": "modules/contrib/composer_manager/src/Composer"
         }
     }
 }
