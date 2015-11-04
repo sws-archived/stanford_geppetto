@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1df80bfa8e89592baf749bf7836fa58c",
+    "hash": "654abb1371bd18dca6a501eaf0cd99fc",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -685,6 +685,44 @@
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
             "description": "Provides an Alfred like search box to navigate within your site.",
             "time": "2015-04-20 08:20:02"
+        },
+        {
+            "name": "drupal/composer_manager",
+            "version": "8.1.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/composer_manager",
+                "reference": "afeb58ca20efeec8206924c7a9429e1cb9295367"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/composer_manager-8.x-1.0-rc1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "See contributors",
+                    "homepage": "http://drupal.org/node/1929436/committers",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Allows contributed modules to require external libraries via Composer.",
+            "homepage": "http://drupal.org/project/composer_manager",
+            "time": "2015-10-18 20:32:10"
         },
         {
             "name": "drupal/console",
