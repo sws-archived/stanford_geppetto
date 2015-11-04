@@ -16,13 +16,16 @@
     "drupal/console": "dev-master",
     "drupal/webprofiler": "8.*",
     "drupal/coffee": "8.*",
-    "drupal/composer_manager": "8.*",
+    "drupal/composer_manager": "8.*"
+  },
+  "provide": {
+    "derhasi/composer-preserve-paths": "0.1.*"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
     "installer-paths": {
-      "web": [
+      "./": [
         "type:drupal-core"
       ],
       "web/modules/contrib/{$name}": [
@@ -34,9 +37,12 @@
       "web/themes/contrib/{$name}": [
         "type:drupal-theme"
       ],
-      "web/drush/commands/{$name}": [
+      "drush/contrib/{$name}": [
         "type:drupal-drush"
       ]
-    }
+    },
+    "preserve-paths": [
+      "./"
+    ]
   }
 }
