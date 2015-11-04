@@ -16,7 +16,8 @@
     "drupal/console": "dev-master",
     "drupal/webprofiler": "8.*",
     "drupal/coffee": "8.*",
-    "drupal/composer_manager": "8.*"
+    "drupal/composer_manager": "8.*",
+    "drupal/devel": "8.*"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -38,5 +39,9 @@
         "type:drupal-drush"
       ]
     }
+  },
+  "scripts": {
+    "post-install-cmd": "scripts/composer/post-install.sh",
+    "post-update-cmd": "scripts/composer/post-update.sh"
   }
 }
