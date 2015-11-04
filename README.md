@@ -9,8 +9,17 @@ Geppetto builds Pinocchio
 Installation
 ---
 
-Run `composer install`
-Run `drush si stanford_pinocchio`
+Existing Project:
+Execute `composer install` from your Drupal installation's root directory:
+
+NOTE: Executing this will delete everything in your core directory and download the core version from the upstream repository. Any modifications to files in core will be lost.
+
+New Project:
+Execute `composer create-project drupal/drupal my_site_name 8.0.*@dev`
+
+This will download the drupal/drupal project into a folder named my_site_name and then execute composer install.
+
+
 
 Troubleshooting
 ---
