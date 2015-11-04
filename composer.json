@@ -28,19 +28,16 @@
     },
     "extra": {
         "installer-paths": {
-            "web/core": [
-                "type:drupal-core"
-            ],
-            "web/modules/contrib/{$name}": [
+            "modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
-            "web/profiles/contrib/{$name}": [
+            "profiles/contrib/{$name}": [
                 "type:drupal-profile"
             ],
-            "web/themes/contrib/{$name}": [
+            "themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
-            "web/drush/commands/{$name}": [
+            "drush/commands/{$name}": [
                 "type:drupal-drush"
             ]
         }
