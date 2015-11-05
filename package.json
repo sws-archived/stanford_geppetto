@@ -12,11 +12,14 @@
     "grunt": "^0.4.5",
     "grunt-available-tasks": "^0.6.1",
     "grunt-drush": "0.0.7",
+    "grunt-git": "^0.3.5",
+    "grunt-git-deploy": "^0.1.1",
     "grunt-githooks": "^0.3.1",
     "grunt-mkdir": "^0.1.2",
     "grunt-notify": "^0.4.1",
     "grunt-prompt": "^1.3.0",
-    "grunt-shell": "^1.1.2"
+    "grunt-shell": "^1.1.2",
+    "load-grunt-tasks": "^3.3.0"
   },
   "dependencies": {
     "grunt-sync": "^0.4.1"
