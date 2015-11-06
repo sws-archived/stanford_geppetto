@@ -8,6 +8,8 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-githooks');
   grunt.loadNpmTasks('grunt-git');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-force-task');
+  grunt.loadNpmTasks('grunt-chmod');
 
   // Custom Tasks.
   grunt.task.loadTasks('./tasks');
@@ -167,6 +169,21 @@ module.exports = function(grunt) {
       }
     },
     // ------------------------------------------------------------------------.
+    chmod: {
+      options: {
+        mode: '775'
+      },
+      cleanbuild: {
+        // Target-specific file/dir lists and/or options go here.
+        src: [
+          '<%= build.webserver_root %><%= build.dest %>/**/*settings.php',
+          "<%= build.webserver_root %><%= build.dest %>/**/files",
+          "<%= build.webserver_root %><%= build.dest %>/**/private",
+          "<%= build.webserver_root %><%= build.dest %>/**/default"
+        ]
+      }
+    },
+    // ------------------------------------------------------------------------.
     clean: {
       options: {
         force: true
@@ -177,10 +194,14 @@ module.exports = function(grunt) {
     },
     // ------------------------------------------------------------------------.
     drush: {
-      builditdanno: {
-        args: ['make', 'stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make'],
-        dest: '<%= build.dest %>'
-        // options: [ "--working-copy", "--no-cache", "--ignore-checksums", "-v", "--prepare-install" ] <- does not work.
+      makeitlive: {
+        args: [
+          'si',
+          "<%= build.profile_name %>",
+          "--root=<%= build.webserver_root %><%= build.dest %>",
+          "--db-url=<%= build.dbtype %>://<%= build.dbuser %>:<%= build.dbpass %>@<%= build.dbwhere %>/<%= build.dbname %>",
+          "-y"
+        ]
       }
     }
   });
@@ -191,7 +212,8 @@ module.exports = function(grunt) {
   // The drush make.
   grunt.registerTask('drush-makey', [
     "shell:deployercheckout",
-    "clean:build",
+    "chmod:cleanbuild",
+    "force:clean:build",
     "shell:drushmake",
     "notify"
   ]);

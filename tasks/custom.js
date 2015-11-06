@@ -13,13 +13,20 @@ module.exports = function(grunt) {
    */
   grunt.registerTask('build-install', 'Build and install a Drupal site.', function() {
     grunt.task.run("gather-config");
+    grunt.task.run("alter-config");
     grunt.task.run("drush-makey");
-
-    // grunt.task.run("drush-install");
+    grunt.task.run("drush:makeitlive");
   });
 
-  grunt.registerTask("echo-stuff", "echo stuff", function() {
-    console.log(grunt.config("build.product"));
+  /**
+   * [description]
+   * @param  {[type]} ) {               var product [description]
+   * @return {[type]}   [description]
+   */
+  grunt.registerTask("alter-config", "Adjust the prompted settings", function() {
+    var product = grunt.config("build.product");
+    var product_name = product.replace("-", "_");
+    grunt.config("build.product_name", "stanford_sites_" + product_name);
   });
 
   /**
