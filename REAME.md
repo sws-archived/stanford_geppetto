@@ -3,7 +3,45 @@
 
 [sherakama](https://github.com/sherakama)
 
-A grunt task runner for building SWS Drupal sites.
+A grunt task runner for building SWS Drupal sites and other misc tasks.
+
+Installation
+---
+
+Clone this repository somewhere. You can choose. It really doesn't matter.
+
+`git clone git@github.com:SU-SWS/stanford_geppetto.git`
+
+Open up your terminal (shell) and navigate to this directory.
+
+`cd stanford_geppetto`
+
+Download the dependencies with npm.
+
+`npm install`
+
+Copy _example.configure.json_ to configure.json
+
+`cp example.configure.json configure.json`
+
+Open up and edit the file with your configuration otions:
+
+```
+Psuedo Code for configure.json
+
+{
+  "build": {
+    "webserver_root": "/path/to/your/webserver/", // eg: /Applications/MAMP/htdocs/
+    "environment": "local", // Can be local, anchorage, sites, or mamp
+    "dbtype": "mysql", // Probably always this unless you use pgsql
+    "dbwhere": "127.0.0.1", // The location of the database
+    "dbuser": "root", // (optional) If omitted scripts will prompt for this.
+    "dbpass": "root", // (optional) If omitted scripts will prompt for this
+    "branch": "7.x-4.x" // The stanford-jumpstart-deployer branch/tag/hash to build from
+  }
+}
+
+```
 
 Commands
 ---
@@ -15,10 +53,7 @@ Commands
 * `--buildType`
 ** local, sites, or anchorage
 
-Installation
----
 
-Install this module like any other module. [See Drupal Documentation](https://drupal.org/documentation/install/modules-themes/modules-7)
 
 Configuration
 ---
