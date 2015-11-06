@@ -1,6 +1,6 @@
 node_modules
 stanford-jumpstart-deployer
-GruntConfig.json
+configure.json
 
 # Numerous always-ignore extensions
 *.diff
