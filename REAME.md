@@ -5,6 +5,16 @@
 
 A grunt task runner for building SWS Drupal sites.
 
+Commands
+---
+
+`grunt build`
+
+### options
+
+* `--buildType`
+** local, sites, or anchorage
+
 Installation
 ---
 
