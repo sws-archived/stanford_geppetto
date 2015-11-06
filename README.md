@@ -8,6 +8,10 @@ A grunt task runner for building SWS Drupal sites and other misc tasks.
 Installation
 ---
 
+Install Grunt CLI
+
+`npm install -g grunt-cli`
+
 Clone this repository somewhere. You can choose. It really doesn't matter.
 
 `git clone git@github.com:SU-SWS/stanford_geppetto.git`
