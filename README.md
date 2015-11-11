@@ -82,3 +82,4 @@ TODO
 * Refactor in to a more maintainable format
 * Drush site alias integration
 * Remote build and sync (sites?)
+* Environment software location config (php, drush, behat, etc)
