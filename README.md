@@ -1,5 +1,5 @@
 #[Stanford Geppetto](https://github.com/SU-SWS/stanford_geppetto)
-##### Version: 0.0.1
+##### Version: 7.0.0
 
 [sherakama](https://github.com/sherakama)
 

@@ -1,21 +1,8 @@
 module.exports = function(grunt) {
 
-  // Requires...
-  require('load-grunt-tasks')(grunt);
-
-  grunt.loadNpmTasks('grunt-prompt');
-  grunt.loadNpmTasks('grunt-notify');
-  // grunt.loadNpmTasks('grunt-githooks');
-  grunt.loadNpmTasks('grunt-git');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-force-task');
-  grunt.loadNpmTasks('grunt-chmod');
-
-  // Custom Tasks.
-  grunt.task.loadTasks('./tasks');
-
-  // Config.
-  grunt.initConfig({
+  // Declare vars.
+  var masterConfig = {};
+  masterConfig = {
     availabletasks: {
       tasks: {}
     },
@@ -68,7 +55,7 @@ module.exports = function(grunt) {
               type: 'input',
               message: "What is the site directory name?",
               default: grunt.config("build.dest")
-            },
+            }
           ]
         }
       },
@@ -194,35 +181,73 @@ module.exports = function(grunt) {
     },
     // ------------------------------------------------------------------------.
     drush: {
+      builditdanno: {
+        args: [
+          'make',
+          "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
+          "<%= build.webserver_root %><%= build.dest %>",
+          "--working-copy",
+          "-y",
+          "-v",
+          "--no-cache",
+          "--ignore-checksums",
+          "--prepare-install",
+          "--concurrency=4"
+        ]
+      },
       makeitlive: {
         args: [
           'si',
-          "<%= build.profile_name %>",
+          "<%= build.product_name %>",
           "--root=<%= build.webserver_root %><%= build.dest %>",
           "--db-url=<%= build.dbtype %>://<%= build.dbuser %>:<%= build.dbpass %>@<%= build.dbwhere %>/<%= build.dbname %>",
           "-y"
         ]
+      },
+      adminadmin: {
+        args: [
+          'upwd',
+          'admin',
+          '--password=admin',
+          "--root=<%= build.webserver_root %><%= build.dest %>"
+        ]
+      },
+      loginuli: {
+        args: [
+          'uli',
+          "--root=<%= build.webserver_root %><%= build.dest %>"
+        ]
       }
     }
-  });
+  };
 
-  // Task(s).
+  // Custom Dependencies.
+  require('load-grunt-tasks')(grunt);
+
+  // NPM Dependencies.
+  grunt.loadNpmTasks('grunt-prompt');
+  grunt.loadNpmTasks('grunt-notify');
+  grunt.loadNpmTasks('grunt-git');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-force-task');
+  grunt.loadNpmTasks('grunt-chmod');
+
+  // Task Registry.
+  // ---------------------------------------------------------------------------
+
+  // Default task list
   grunt.registerTask('default', ['availabletasks']);
 
-  // The drush make.
-  grunt.registerTask('drush-makey', [
-    "shell:deployercheckout",
-    "chmod:cleanbuild",
-    "force:clean:build",
-    "shell:drushmake",
-    "notify"
-  ]);
+  // Custom Tasks.
+  grunt.task.loadTasks('./tasks');
 
   // Some supporting tasks.
   grunt.registerTask('clone-deployer', ["gitclone:deployer"]);
   grunt.registerTask('pull-deployer', ["shell:deployercheckout"]);
 
-  // Custom tasks
+
+  // Init the Config.
+  grunt.initConfig(masterConfig);
 
 };
 
@@ -323,3 +348,4 @@ function getDBNameFromDestination(dest) {
   var clean = last.replace(/([^a-z0-9]+)/gi, '_');
   return clean;
 }
+

@@ -1,4 +1,9 @@
 {
+  "system": {
+    "drush": "/usr/local/bin/drush",
+    "php": "/usr/local/bin/php",
+    "mysql": "/usr/local/bin/mysql"
+  },
   "build": {
     "webserver_root": "/httpdocs/",
     "environment": "local",

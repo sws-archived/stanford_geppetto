@@ -3,6 +3,7 @@
 SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPOPATH=$SCRIPTPATH"/../stanford-jumpstart-deployer"
 GITREMOTE="git@github.com:SU-SWS/stanford-jumpstart-deployer.git"
+GITREMOTENAME="origin"
 GITBRANCH="7.x-4.x"
 
 if [ ! -z "$1" ]; then
@@ -14,5 +15,5 @@ if [ ! -d $REPOPATH ]; then
 fi
 
 cd $REPOPATH
-git fetch origin
-git checkout $GITBRANCH
+git fetch $GITREMOTENAME
+git checkout $GITREMOTENAME/$GITBRANCH

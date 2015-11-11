@@ -7,19 +7,45 @@ module.exports = function(grunt) {
   // Requirements.
   var absorb = require('absorb');
 
-
   /**
    * Build and install a Drupal website.
    */
   grunt.registerTask('build-install', 'Build and install a Drupal site.', function() {
     grunt.task.run("gather-config");
     grunt.task.run("alter-config");
-    grunt.task.run("drush-makey");
+    grunt.task.run("build-site");
     grunt.task.run("drush:makeitlive");
+    grunt.task.run("finish-installation");
   });
 
   /**
-   * [description]
+   * Drush make task
+   */
+  grunt.registerTask('build-site', [
+    "shell:deployercheckout",
+    "chmod:cleanbuild",
+    "force:clean:build",
+    "drush:builditdanno",
+    "notify"
+  ]);
+
+  /**
+   * Build and install a Drupal website.
+   */
+  grunt.registerTask('finish-installation', 'Finish up with some helper functions.', function() {
+
+    var env = grunt.config("build.environment");
+
+    // If the environment is local lets set the admin username and pass.
+    if (env == "local") {
+      grunt.task.run("drush:adminadmin");
+      grunt.task.run("drush:loginuli");
+    }
+
+  });
+
+  /**
+   * Alter config
    * @param  {[type]} ) {               var product [description]
    * @return {[type]}   [description]
    */
