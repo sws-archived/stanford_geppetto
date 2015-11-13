@@ -83,3 +83,4 @@ TODO
 * Drush site alias integration
 * Remote build and sync (sites?)
 * Environment software location config (php, drush, behat, etc)
+* Clone from remote (sites and anchorage)
