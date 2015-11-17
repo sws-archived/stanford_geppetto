@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     grunt.task.run("gather-config");
     grunt.task.run("alter-config");
     grunt.task.run("build-site");
-    grunt.task.run("drush:makeitlive");
+    grunt.task.run("drush:install");
     grunt.task.run("finish-installation");
   });
 
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
     "shell:deployercheckout",
     "chmod:cleanbuild",
     "force:clean:build",
-    "drush:builditdanno",
+    "drush:deploy",
     "notify"
   ]);
 
