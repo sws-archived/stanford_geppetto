@@ -3,34 +3,39 @@ module.exports = function(grunt) {
   // Custom Dependencies.
   require('load-grunt-tasks')(grunt);
 
+  // Measures the time each task takes.
+  require('time-grunt')(grunt);
+
   // Custom Tasks.
   grunt.task.loadTasks('tasks');
 
   // Task Registry.
-  // ---------------------------------------------------------------------------
+  // --------------------------------------------------------------------------.
 
+  // Tee up the package info.
   var config = {
     pkg: grunt.file.readJSON('package.json'),
     env: process.env
   };
 
+  // Combine all the task options.
   grunt.util._.extend(config, loadConfig('./tasks/options/'));
   grunt.initConfig(config);
 
-  // Default task list.
+  // Default task.
   grunt.registerTask('default', ['availabletasks']);
 
   // Some supporting tasks.
-  grunt.registerTask('clone-deployer', ["gitclone:deployer"]);
+  grunt.registerTask("clone-repos", ["clean:gitrepos", "gitclone:deployer", "gitclone:linkyclicky"]);
   grunt.registerTask('pull-deployer', ["shell:deployercheckout"]);
+
 
 };
 
-// FUNCTIONS
-// ----------------------------------------------------------------------------.
-// ----------------------------------------------------------------------------.
 
-
+// ----------------------------------------------------------------------------.
+// Helper Functions
+// ----------------------------------------------------------------------------.
 
 /**
  * Require each of your configuration files and concatenate them into a

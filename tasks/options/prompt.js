@@ -2,7 +2,13 @@
  * Prompt tasks
  *
  */
-module.exports = {
+
+var help = require("../util/helpers");
+var grunt = require("grunt");
+var helpers = new help(grunt);
+
+// Config variable is outside of wrapper so it can have dynamic input.
+var cf = {
   product: {
     options: {
       questions: [
@@ -10,8 +16,8 @@ module.exports = {
           config: 'build.product',
           type: 'list', // list, checkbox, confirm, input, password
           message: "Which product would you like to install?",
-          default: grunt.helper("getProductTypesDefault", grunt),
-          choices: grunt.helper("getProductTypes")
+          default: helpers.getProductTypesDefault(grunt),
+          choices: helpers.getProductTypes()
         }
       ]
     }
@@ -23,8 +29,8 @@ module.exports = {
           config: 'build.type',
           type: 'list',
           message: "What type of build do you want?",
-          default: grunt.helper("getBuildTypesDefault", grunt),
-          choices: grunt.helper("getBuildTypes")
+          default: helpers.getBuildTypesDefault(grunt),
+          choices: helpers.getBuildTypes()
         }
       ]
     }
@@ -36,8 +42,8 @@ module.exports = {
           config: 'build.environment',
           type: 'list',
           message: "What environment are you building on?",
-          default: grunt.helper("getEnvironmentTypesDefault", grunt),
-          choices: grunt.helper("getEnvironmentTypes")
+          default: helpers.getEnvironmentTypesDefault(grunt),
+          choices: helpers.getEnvironmentTypes()
         }
       ]
     }
@@ -114,4 +120,7 @@ module.exports = {
       ]
     }
   }
-}
+};
+
+// Pass back the info to grunt...
+module.exports = cf;
