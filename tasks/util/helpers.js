@@ -103,6 +103,47 @@ function Helpers(grunt) {
     return clean;
   };
 
+
+  /**
+   * [getRequiredPromptSettings description]
+   * @param  {[type]} grunt [description]
+   * @return {[type]}       [description]
+   */
+  this.getCLIOptions = function(grunt) {
+    return {
+      "build": {
+        "product":        grunt.option("buildProduct"),
+        "type":           grunt.option("buildType"),
+        "environment":    grunt.option("buildEnvironment"),
+        "dest":           grunt.option("directory"),
+        "branch":         grunt.option("gitCheckout"),
+        "webserver_root": grunt.option("webserverRoot"),
+        "dbtype":         grunt.option("dbType"),
+        "dbwhere":        grunt.option("dbWhere"),
+        "dbuser":         grunt.option("dbUser"),
+        "dbpass":         grunt.option("dbPass"),
+        "dbname":         grunt.option("dbName")
+      }
+    };
+  };
+
+  /**
+   * Delete all null (or undefined) properties from an object.
+   * Set 'recurse' to true if you also want to delete properties in nested objects.
+   */
+  this.deleteNullProperties = function(test, recurse) {
+    for (var i in test) {
+      if (test[i] === null || typeof test[i] === "undefined") {
+        delete test[i];
+      }
+      else if (recurse && typeof test[i] === 'object') {
+        test[i] = this.deleteNullProperties(test[i], recurse);
+      }
+    }
+    return test;
+  };
+
 }
 
+// Send away!
 module.exports = Helpers;

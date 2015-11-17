@@ -62,20 +62,24 @@ module.exports = function(grunt) {
    */
   grunt.registerTask("gather-config", "Load configure.json and prompt for the rest", function() {
 
+    // Load up util.
+    var help = require("./util/helpers");
+    var helpers = new help(grunt);
+
     // The first place we gather config is the config file.
     var defaults = grunt.file.readJSON('configure.json');
     grunt.config("defaults", defaults);
 
     // Next we gather from passed in options. These are of one order more
     // importance than the configure.json file.
-    var options = getCLIOptions(grunt);
+    var options = helpers.getCLIOptions(grunt);
     grunt.config("cliopts", options);
 
     // Store these for later.
     var keys = Object.keys(options.build);
 
     // Clean out null values and merge the two together.
-    deleteNullProperties(options, true);
+    helpers.deleteNullProperties(options, true);
     var combined = {
       "build": absorb(options.build, defaults.build, true, true)
     };
@@ -94,42 +98,3 @@ module.exports = function(grunt) {
 
 
 };
-
-/**
- * [getRequiredPromptSettings description]
- * @param  {[type]} grunt [description]
- * @return {[type]}       [description]
- */
-function getCLIOptions(grunt) {
-  return {
-    "build": {
-      "product":        grunt.option("buildProduct"),
-      "type":           grunt.option("buildType"),
-      "environment":    grunt.option("buildEnvironment"),
-      "dest":           grunt.option("directory"),
-      "branch":         grunt.option("gitCheckout"),
-      "webserver_root": grunt.option("webserverRoot"),
-      "dbtype":         grunt.option("dbType"),
-      "dbwhere":        grunt.option("dbWhere"),
-      "dbuser":         grunt.option("dbUser"),
-      "dbpass":         grunt.option("dbPass"),
-      "dbname":         grunt.option("dbName")
-    }
-  };
-}
-
-/**
- * Delete all null (or undefined) properties from an object.
- * Set 'recurse' to true if you also want to delete properties in nested objects.
- */
-function deleteNullProperties(test, recurse) {
-  for (var i in test) {
-    if (test[i] === null || typeof test[i] === "undefined") {
-      delete test[i];
-    }
-    else if (recurse && typeof test[i] === 'object') {
-      test[i] = deleteNullProperties(test[i], recurse);
-    }
-  }
-  return test;
-}

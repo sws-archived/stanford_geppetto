@@ -2,7 +2,7 @@
  * Drush tasks.
  */
 module.exports = {
-  builditdanno: {
+  deploy: {
     args: [
       'make',
       "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
@@ -16,7 +16,21 @@ module.exports = {
       "--concurrency=4"
     ]
   },
-  makeitlive: {
+  upgrade: {
+    args: [
+      'make',
+      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
+      "<%= build.webserver_root %><%= build.dest %>",
+      "--working-copy",
+      "-y",
+      "-v",
+      "--no-cache",
+      "--ignore-checksums",
+      "--no-core",
+      "--concurrency=4"
+    ]
+  },
+  install: {
     args: [
       'si',
       "<%= build.product_name %>",
