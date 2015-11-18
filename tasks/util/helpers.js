@@ -5,6 +5,7 @@
  *
  */
 function Helpers(grunt) {
+
   /**
    * They types of products that are available.
    * @param  {[type]} answers [description]
@@ -12,11 +13,11 @@ function Helpers(grunt) {
    */
   this.getProductTypes = function() {
     return [
-      { name:'JSV', value: "jumpstart" },
-      { name:'JSPlus', value: "jumpstart-plus" },
-      { name:'JSA', value: "jumpstart-academic" },
-      { name:'JSVPSA', value: "jumpstart-vpsa" },
-      { name:'JSE', value: "jumpstart-engineering" },
+      { name:'JSV',     value: "jumpstart" },
+      { name:'JSPlus',  value: "jumpstart-plus" },
+      { name:'JSA',     value: "jumpstart-academic" },
+      { name:'JSVPSA',  value: "jumpstart-vpsa" },
+      { name:'JSE',     value: "jumpstart-engineering" },
     ];
   };
 
@@ -27,7 +28,7 @@ function Helpers(grunt) {
    * @return {[type]}       [description]
    */
   this.getProductTypesDefault = function(grunt) {
-    var opt = grunt.option('buildProduct');
+    var opt = grunt.option('build-product');
     if (typeof opt !== undefined || opt.length >= 1) {
       return opt;
     }
@@ -43,6 +44,7 @@ function Helpers(grunt) {
   this.getBuildTypes = function() {
     return [
       'development',
+      'verification',
       'production'
     ];
   };
@@ -54,7 +56,7 @@ function Helpers(grunt) {
    * @return {[type]}       [description]
    */
   this.getBuildTypesDefault = function(grunt) {
-    var opt = grunt.option('buildType');
+    var opt = grunt.option('build-type');
     if (typeof opt !== undefined || opt.length < 1) {
       return opt;
     }
@@ -83,7 +85,7 @@ function Helpers(grunt) {
    * @return {[type]}       [description]
    */
   this.getEnvironmentTypesDefault = function(grunt) {
-    var opt = grunt.option('buildEnvironment');
+    var opt = grunt.option('build-environment');
     if (typeof opt !== undefined || opt.length >= 1) {
       return opt;
     }
@@ -105,24 +107,31 @@ function Helpers(grunt) {
 
 
   /**
-   * [getRequiredPromptSettings description]
+   * A single function to get all of the possible command line parameters
+   * needed for the custom tasks.
    * @param  {[type]} grunt [description]
    * @return {[type]}       [description]
    */
   this.getCLIOptions = function(grunt) {
     return {
+      "system": {
+        "drush":          grunt.option("system-drush"),
+        "mysql":          grunt.option("system-mysql"),
+        "php":            grunt.option("system-php"),
+        "behat":          grunt.option("system-behat")
+      },
       "build": {
-        "product":        grunt.option("buildProduct"),
-        "type":           grunt.option("buildType"),
-        "environment":    grunt.option("buildEnvironment"),
-        "dest":           grunt.option("directory"),
-        "branch":         grunt.option("gitCheckout"),
-        "webserver_root": grunt.option("webserverRoot"),
-        "dbtype":         grunt.option("dbType"),
-        "dbwhere":        grunt.option("dbWhere"),
-        "dbuser":         grunt.option("dbUser"),
-        "dbpass":         grunt.option("dbPass"),
-        "dbname":         grunt.option("dbName")
+        "product":        grunt.option("build-product"),
+        "type":           grunt.option("build-type"),
+        "environment":    grunt.option("build-environment"),
+        "dest":           grunt.option("build-directory"),
+        "branch":         grunt.option("build-git-branch"),
+        "webserver_root": grunt.option("build-webserver-root"),
+        "dbtype":         grunt.option("build-database-type"),
+        "dbwhere":        grunt.option("build-database-host"),
+        "dbuser":         grunt.option("build-database-user"),
+        "dbpass":         grunt.option("build-database-pass"),
+        "dbname":         grunt.option("build-database-name")
       }
     };
   };

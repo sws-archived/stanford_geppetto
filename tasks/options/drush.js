@@ -30,6 +30,20 @@ module.exports = {
       "--concurrency=4"
     ]
   },
+  environment: {
+    args: [
+      'make',
+      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.environment %>.make",
+      "<%= build.webserver_root %><%= build.dest %>",
+      "--working-copy",
+      "-y",
+      "-v",
+      "--no-cache",
+      "--ignore-checksums",
+      "--no-core",
+      "--concurrency=4"
+    ]
+  },
   install: {
     args: [
       'si',

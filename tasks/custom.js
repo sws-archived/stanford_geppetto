@@ -46,10 +46,11 @@ module.exports = function(grunt) {
   /**
    * Build and install a Drupal website.
    */
-  grunt.registerTask('build-install', 'Build and install a Drupal site.', function() {
-    grunt.task.run("gather-config");
-    grunt.task.run("alter-config");
-    grunt.task.run("build-site");
+  grunt.registerTask('build-make-install', 'Build and install a Drupal site.', function() {
+    grunt.task.run("config-gather");
+    grunt.task.run("prompt-build-install");
+    grunt.task.run("config-alter-build-install");
+    grunt.task.run("build-make");
     grunt.task.run("drush:install");
     grunt.task.run("finish-installation");
   });
@@ -57,13 +58,27 @@ module.exports = function(grunt) {
   /**
    * Drush make task
    */
-  grunt.registerTask('build-site', [
-    "shell:deployercheckout",
-    "chmod:cleanbuild",
-    "force:clean:build",
-    "drush:deploy",
-    "notify"
-  ]);
+  grunt.registerTask('build-make',
+    "Drush make a site file structure.",
+    [
+      "shell:deployercheckout",
+      "chmod:cleanbuild",
+      "force:clean:build",
+      "drush:deploy",
+      "notify:buildmake"
+    ]
+  );
+
+  /**
+   * Drush make environment
+   */
+  grunt.registerTask('build-make-environment',
+    "Deploy (drush make) environment specific resources.",
+    [
+      "drush:environment",
+      "force:notify:buildenvironment"
+    ]
+  );
 
   /**
    * Build and install a Drupal website.
@@ -81,22 +96,10 @@ module.exports = function(grunt) {
   });
 
   /**
-   * Alter config
-   * @param  {[type]} ) {               var product [description]
-   * @return {[type]}   [description]
+   * Get defaults from the configure.json file and command line. Store them for
+   * later.
    */
-  grunt.registerTask("alter-config", "Adjust the prompted settings", function() {
-    var product = grunt.config("build.product");
-    var product_name = product.replace("-", "_");
-    grunt.config("build.product_name", "stanford_sites_" + product_name);
-  });
-
-  /**
-   * Get defaults and figure out what we still need to propt for.
-   * @param  {[type]}   [description]
-   * @return {[type]}   [description]
-   */
-  grunt.registerTask("gather-config", "Load configure.json and prompt for the rest", function() {
+  grunt.registerTask("config-gather", "Load configure.json and gather CLI options", function() {
 
     // Load up util.
     var help = require("./util/helpers");
@@ -110,6 +113,28 @@ module.exports = function(grunt) {
     // importance than the configure.json file.
     var options = helpers.getCLIOptions(grunt);
     grunt.config("cliopts", options);
+
+  });
+
+  /**
+   * Alter config after it has been gathered and prompted for.
+   */
+  grunt.registerTask("config-alter-build-install", "Adjust the prompted settings for the build-install", function() {
+    var product = grunt.config("build.product");
+    var product_name = product.replace("-", "_");
+    grunt.config("build.product_name", "stanford_sites_" + product_name);
+  });
+
+  /**
+   * Sort out what configuration we have and prompt for the rest.
+   */
+  grunt.registerTask("prompt-build-install", "Sort out what configuration we have and prompt for the rest", function() {
+
+    // Get the stored defualts from the configure.json file.
+    var defaults = grunt.config("defaults");
+
+    // Get the stored cli opts.
+    var options = grunt.config("cliopts");
 
     // Store these for later.
     var keys = Object.keys(options.build);
@@ -129,8 +154,6 @@ module.exports = function(grunt) {
         grunt.task.run("prompt:" + keys[i]);
       }
     }
-
   });
-
 
 };
