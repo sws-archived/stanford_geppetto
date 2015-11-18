@@ -8,6 +8,14 @@ A grunt task runner for building SWS Drupal sites and other misc tasks.
 Installation
 ---
 
+Install Node.js.
+
+`brew install node`
+
+For more information:
+* https://nodejs.org/en/
+* http://blog.teamtreehouse.com/install-node-js-npm-mac
+
 Install Grunt CLI
 
 `npm install -g grunt-cli`
