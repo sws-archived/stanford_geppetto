@@ -36,7 +36,7 @@ Copy _example.configure.json_ to configure.json
 
 `cp example.configure.json configure.json`
 
-Open up and edit the file with your configuration otions:
+Open up and edit `configure.json` with your configuration otions:
 
 ```
 Psuedo Code for configure.json
