@@ -16,6 +16,7 @@ module.exports = function(grunt) {
     ["clean:gitrepos", "gitclone:deployer", "gitclone:linkyclicky"]
   );
 
+
   /**
    * Clone the linky-clicky repo.
    */
@@ -24,6 +25,7 @@ module.exports = function(grunt) {
     "Get a fresh copy of the linky-clicky behat repository",
     ["clean:linkyclicky", "gitclone:linkyclicky"]
   );
+
 
   /**
    * Clone the deployer repo.
@@ -34,6 +36,7 @@ module.exports = function(grunt) {
     ["clean:deployer", "gitclone:deployer"]
   );
 
+
   /**
    * Pull the latest branch from the deployer.
    */
@@ -42,6 +45,7 @@ module.exports = function(grunt) {
     "Pull the latest deployer branch",
     ["shell:deployercheckout"]
   );
+
 
   /**
    * Build and install a Drupal website.
@@ -55,6 +59,7 @@ module.exports = function(grunt) {
     grunt.task.run("finish-installation");
   });
 
+
   /**
    * Drush make task
    */
@@ -65,20 +70,37 @@ module.exports = function(grunt) {
       "chmod:cleanbuild",
       "force:clean:build",
       "drush:deploy",
+      "build-make-environment",
       "notify:buildmake"
     ]
   );
 
+
   /**
    * Drush make environment
    */
-  grunt.registerTask('build-make-environment',
-    "Deploy (drush make) environment specific resources.",
-    [
-      "drush:environment",
-      "force:notify:buildenvironment"
-    ]
-  );
+  grunt.registerTask('build-make-environment', "Deploy (drush make) environment specific resources.", function() {
+
+
+    // Check for existance of environment file.
+    var buildType = grunt.config("build.type");
+    var buildEnvironment = grunt.config("build.environment");
+    var path = grunt.template.process("stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.environment %>.make", {data:{build:{type:buildType,environment:buildEnvironment}}});
+    var isFile = grunt.file.exists(path);
+
+    // If no file let the user know and carry on.
+    if (isFile === false) {
+      grunt.log.error("WARNING: No environment drush make file found in build-make-environment task.");
+      grunt.log.error("Envrionment path not found: " + path);
+      return;
+    }
+
+    // Build the file!
+    grunt.task.run("drush:environment");
+    grunt.task.run("force:notify:buildenvironment");
+
+  });
+
 
   /**
    * Build and install a Drupal website.
@@ -94,6 +116,7 @@ module.exports = function(grunt) {
     }
 
   });
+
 
   /**
    * Get defaults from the configure.json file and command line. Store them for
@@ -116,6 +139,7 @@ module.exports = function(grunt) {
 
   });
 
+
   /**
    * Alter config after it has been gathered and prompted for.
    */
@@ -125,10 +149,15 @@ module.exports = function(grunt) {
     grunt.config("build.product_name", "stanford_sites_" + product_name);
   });
 
+
   /**
    * Sort out what configuration we have and prompt for the rest.
    */
   grunt.registerTask("prompt-build-install", "Sort out what configuration we have and prompt for the rest", function() {
+
+    // Load up util.
+    var help = require("./util/helpers");
+    var helpers = new help(grunt);
 
     // Get the stored defualts from the configure.json file.
     var defaults = grunt.config("defaults");
