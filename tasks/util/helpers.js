@@ -120,12 +120,31 @@ function Helpers(grunt) {
         "php":            grunt.option("system-php"),
         "behat":          grunt.option("system-behat")
       },
+      "buildinstall": {
+        "product":        grunt.option("build-product"),
+        "type":           grunt.option("build-type"),
+        "environment":    grunt.option("build-environment"),
+        "dest":           grunt.option("build-directory"),
+        "branch":         grunt.option("build-git-branch"),
+        "webserver_root": grunt.option("build-webserver-root"),
+        "dbtype":         grunt.option("build-database-type"),
+        "dbwhere":        grunt.option("build-database-host"),
+        "dbuser":         grunt.option("build-database-user"),
+        "dbpass":         grunt.option("build-database-pass"),
+        "dbname":         grunt.option("build-database-name")
+      },
       "build": {
         "product":        grunt.option("build-product"),
         "type":           grunt.option("build-type"),
         "environment":    grunt.option("build-environment"),
         "dest":           grunt.option("build-directory"),
         "branch":         grunt.option("build-git-branch"),
+        "webserver_root": grunt.option("build-webserver-root"),
+      },
+      "install": {
+        "product":        grunt.option("build-product"),
+        "environment":    grunt.option("build-environment"),
+        "dest":           grunt.option("build-directory"),
         "webserver_root": grunt.option("build-webserver-root"),
         "dbtype":         grunt.option("build-database-type"),
         "dbwhere":        grunt.option("build-database-host"),
