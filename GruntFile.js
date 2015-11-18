@@ -25,10 +25,8 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['availabletasks']);
 
-  // Some supporting tasks.
-  grunt.registerTask("clone-repos", ["clean:gitrepos", "gitclone:deployer", "gitclone:linkyclicky"]);
-  grunt.registerTask('pull-deployer', ["shell:deployercheckout"]);
-
+  // All other tasks should be registered in their own tasks. Please do not
+  // register tasks here.
 
 };
 
