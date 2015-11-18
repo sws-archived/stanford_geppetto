@@ -109,8 +109,8 @@ function Helpers(grunt) {
   /**
    * A single function to get all of the possible command line parameters
    * needed for the custom tasks.
-   * @param  {[type]} grunt [description]
-   * @return {[type]}       [description]
+   *
+   * CLI options are grouped by a key so they can be used to generate prompts.
    */
   this.getCLIOptions = function(grunt) {
     return {
@@ -151,6 +151,12 @@ function Helpers(grunt) {
         "dbuser":         grunt.option("build-database-user"),
         "dbpass":         grunt.option("build-database-pass"),
         "dbname":         grunt.option("build-database-name")
+      },
+      "upgrade": {
+        "product":        grunt.option("build-product"),
+        "type":           grunt.option("build-type"),
+        "dest":           grunt.option("build-directory"),
+        "webserver_root": grunt.option("build-webserver-root")
       }
     };
   };

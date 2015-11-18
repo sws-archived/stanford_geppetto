@@ -16,4 +16,5 @@ fi
 
 cd $REPOPATH
 git fetch $GITREMOTENAME
-git checkout $GITREMOTENAME/$GITBRANCH
+git fetch $GITREMOTENAME --tags
+git checkout $GITBRANCH

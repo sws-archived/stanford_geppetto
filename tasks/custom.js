@@ -30,7 +30,7 @@ module.exports = function(grunt) {
   });
 
   /**
-   * Build a Drupal website from drush.
+   * Install a Drupal site from an installation profile.
    */
   grunt.registerTask('build-install', 'Install a Drupal site installation profile.', function() {
     grunt.task.run("config-gather");
@@ -38,6 +38,17 @@ module.exports = function(grunt) {
     grunt.task.run("config-alter-build-install");
     grunt.task.run("drush:install");
     grunt.task.run("finish-installation");
+  });
+
+  /**
+   * Install a Drupal site from an installation profile.
+   */
+  grunt.registerTask('build-upgrade', 'Update a Drupal sites files and run updates.', function() {
+    grunt.task.run("config-gather");
+    grunt.task.run("prompt-build-upgrade");
+    grunt.task.run("config-alter-build-install");
+    grunt.task.run("drush:upgrade");
+    grunt.task.run("drush:updb");
   });
 
 };

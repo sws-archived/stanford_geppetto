@@ -30,6 +30,13 @@ module.exports = {
       "--concurrency=4"
     ]
   },
+  updb: {
+    args: [
+      'updb',
+      "-y",
+      "--root=<%= build.webserver_root %><%= build.dest %>"
+    ]
+  },
   environment: {
     args: [
       'make',
