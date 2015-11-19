@@ -34,7 +34,7 @@ module.exports = {
     args: [
       'updb',
       "-y",
-      "--root=<%= build.webserver_root %><%= build.dest %>"
+      "--root=\"<%= build.webserver_root %><%= build.dest %>\""
     ]
   },
   environment: {
