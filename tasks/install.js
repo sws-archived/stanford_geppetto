@@ -32,8 +32,6 @@ module.exports = function(grunt) {
 
     // Prompt for anything we dont have.
     for (var i in keys) {
-      // Set something.
-      grunt.config("build." + keys[i], combined.build[keys[i]]);
       // Prompt if nothing.
       if (typeof combined.build[keys[i]] == "undefined") {
         grunt.task.run("prompt:" + keys[i]);

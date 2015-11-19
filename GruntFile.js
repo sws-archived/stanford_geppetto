@@ -22,6 +22,9 @@ module.exports = function(grunt) {
   grunt.util._.extend(config, loadConfig('./tasks/options/'));
   grunt.initConfig(config);
 
+  // Always gather the config.
+  grunt.task.run("config-gather");
+
   // Default task.
   grunt.registerTask('default', ['availabletasks']);
 

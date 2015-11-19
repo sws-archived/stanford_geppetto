@@ -23,6 +23,28 @@ module.exports = function(grunt) {
     var options = helpers.getCLIOptions(grunt);
     grunt.config("cliopts", options);
 
+    // Set the defaults first.
+    var defaultgroups = Object.keys(defaults);
+    defaultgroups.forEach(function(groupname) {
+      var keys = Object.keys(defaults[groupname]);
+      keys.forEach(function(key) {
+        if (typeof defaults[groupname][key] !== "undefined") {
+          grunt.config(groupname + "." + key, defaults[groupname][key]);
+        }
+      });
+    });
+
+    // Then set the CLI options.
+    var cligroups = Object.keys(options);
+    cligroups.forEach(function(groupname) {
+      var keys = Object.keys(options[groupname]);
+      keys.forEach(function(key) {
+        if (typeof options[groupname][key] !== "undefined") {
+          grunt.config(groupname + "." + key, options[groupname][key]);
+        }
+      });
+    });
+
   });
 
 };
