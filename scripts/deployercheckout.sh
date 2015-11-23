@@ -5,6 +5,7 @@ REPOPATH=$SCRIPTPATH"/../stanford-jumpstart-deployer"
 GITREMOTE="git@github.com:SU-SWS/stanford-jumpstart-deployer.git"
 GITREMOTENAME="origin"
 GITBRANCH="7.x-4.x"
+GITCHECKOUT=$GITREMOTENAME"/"$GITBRANCH
 
 if [ ! -z "$1" ]; then
   GITBRANCH=$1
@@ -17,4 +18,4 @@ fi
 cd $REPOPATH
 git fetch $GITREMOTENAME
 git fetch $GITREMOTENAME --tags
-git checkout $GITBRANCH
+git checkout $GITCHECKOUT
