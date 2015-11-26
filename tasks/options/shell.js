@@ -10,6 +10,12 @@ module.exports = {
     command: "echo 'hello'"
   },
   deployercheckout: {
-    command: "sh scripts/deployercheckout.sh <%= build.branch %>"
+    command: "./scripts/deployercheckout.sh <%= build.branch %>"
+  },
+  "check-system-env": {
+    command: "./scripts/systemenv.sh"
+  },
+  "alias-system-env": {
+    command: "./scripts/systemalias.sh <%= system.drush %> <%= system.mysql %> <%= system.php %> <%= system.behat %>"
   }
 };

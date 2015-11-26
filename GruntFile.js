@@ -24,6 +24,8 @@ module.exports = function(grunt) {
 
   // Always gather the config.
   grunt.task.run("config-gather");
+  // And set any environment aliases.
+  grunt.task.run("shell:alias-system-env");
 
   // Default task.
   grunt.registerTask('default', ['availabletasks']);

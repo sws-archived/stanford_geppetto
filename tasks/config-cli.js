@@ -14,6 +14,19 @@ module.exports = function(grunt) {
     var help = require("./util/helpers");
     var helpers = new help(grunt);
 
+    // Some system related items that should be available.
+    var system = {
+      drush: "drush",
+      mysql: "mysql",
+      behat: "behat",
+      php: "php"
+    };
+
+    var syskeys = Object.keys(system);
+    syskeys.forEach(function(key) {
+      grunt.config("system." + key, system[key]);
+    });
+
     // The first place we gather config is the config file.
     var defaults = grunt.file.readJSON('configure.json');
     grunt.config("defaults", defaults);
