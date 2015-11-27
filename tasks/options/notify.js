@@ -15,7 +15,7 @@ module.exports = {
       message: 'Your build of <%= build.product %> at <%= build.dest %> has finished.'
     }
   },
-  buildenvionment: {
+  buildenvironment: {
     options: {
       title: 'Environment build complete',
       message: 'Environment build <%= build.environment %> at <%= build.dest %> has finished.'
