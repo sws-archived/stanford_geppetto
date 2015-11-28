@@ -5,7 +5,7 @@ module.exports = {
   deploy: {
     args: [
       'make',
-      "stanford-jumpstart-deployer/<%= build.type %>/product/<%= build.product %>.make",
+      "stanford-jumpstart-deployer/<%= build.type %>/product/<%= build.product %>/<%= build.product %>.make",
       "<%= build.webserver_root %><%= build.dest %>",
       "--working-copy",
       "-y",
@@ -19,7 +19,7 @@ module.exports = {
   upgrade: {
     args: [
       'make',
-      "stanford-jumpstart-deployer/<%= build.type %>/product/<%= build.product %>.make",
+      "stanford-jumpstart-deployer/<%= build.type %>/product/<%= build.product %>/<%= build.product %>.make",
       "<%= build.webserver_root %><%= build.dest %>",
       "--working-copy",
       "-y",
