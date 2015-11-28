@@ -4,7 +4,7 @@ SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPOPATH=$SCRIPTPATH"/../stanford-jumpstart-deployer"
 GITREMOTE="git@github.com:SU-SWS/stanford-jumpstart-deployer.git"
 GITREMOTENAME="origin"
-GITBRANCH="7.x-4.x"
+GITBRANCH="7.x-5.x"
 
 if [ ! -z "$1" ]; then
   GITBRANCH=$1
