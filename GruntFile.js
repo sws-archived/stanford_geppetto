@@ -11,7 +11,6 @@ module.exports = function(grunt) {
 
   // Task Registry.
   // --------------------------------------------------------------------------.
-
   // Tee up the package info.
   var config = {
     pkg: grunt.file.readJSON('package.json'),
@@ -24,8 +23,7 @@ module.exports = function(grunt) {
 
   // Always gather the config.
   grunt.task.run("config-gather");
-  // And set any environment aliases.
-  grunt.task.run("shell:alias-system-env");
+  grunt.task.run("config-sys-path");
 
   // Default task.
   grunt.registerTask('default', ['availabletasks']);
