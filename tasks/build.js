@@ -6,14 +6,14 @@ module.exports = function(grunt) {
   /**
    * Drush make task
    */
-  grunt.registerTask('build-make-build',
+  grunt.registerTask('build:make:build',
     "Drush make a site file structure.",
     [
       "shell:deployercheckout",
       "chmod:cleanbuild",
       "force:clean:build",
       "drush:deploy",
-      "build-make-environment",
+      "build:make:environment",
       "notify:buildmake"
     ]
   );
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
   /**
    * Drush make environment
    */
-  grunt.registerTask('build-make-environment', "Deploy (drush make) environment specific resources.", function() {
+  grunt.registerTask('build:make:environment', "Deploy (drush make) environment specific resources.", function() {
 
     // Check for existance of environment file.
     var buildType = grunt.config("build.type");
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
   /**
    * Alter config after it has been gathered and prompted for.
    */
-  grunt.registerTask("config-alter-build-install", "Adjust the prompted settings for the build-install", function() {
+  grunt.registerTask("config:alter-build-install", "Adjust the prompted settings for the build:install", function() {
     var product = grunt.config("build.product");
     var product_name = product.replace("-", "_");
     grunt.config("build.product_name", "stanford_sites_" + product_name);

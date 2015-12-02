@@ -11,7 +11,7 @@ module.exports = function(grunt) {
    * Clean out and clone fresh the git repos.
    */
   grunt.registerTask(
-    "clone-repos",
+    "clone:repos",
     "Get a fresh copy of the git repositories used by this tool",
     ["clean:gitrepos", "gitclone:deployer", "gitclone:linkyclicky"]
   );
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
    * Clone the linky-clicky repo.
    */
   grunt.registerTask(
-    "clone-linky-clicky",
+    "clone:linky-clicky",
     "Get a fresh copy of the linky-clicky behat repository",
     ["clean:linkyclicky", "gitclone:linkyclicky"]
   );
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
    * Clone the deployer repo.
    */
   grunt.registerTask(
-    'clone-deployer',
+    'clone:deployer',
     "Get a fresh copy of the stanford-jumpstart-deployer repository",
     ["clean:deployer", "gitclone:deployer"]
   );
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
    * Pull the latest branch from the deployer.
    */
   grunt.registerTask(
-    'pull-deployer',
+    'pull:deployer',
     "Pull the latest deployer branch",
     ["shell:deployercheckout"]
   );

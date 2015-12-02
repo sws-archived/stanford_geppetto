@@ -8,7 +8,7 @@ module.exports = function(grunt) {
    * Get defaults from the configure.json file and command line. Store them for
    * later.
    */
-  grunt.registerTask("config-gather", "Load configure.json and gather CLI options", function() {
+  grunt.registerTask("config:gather", "Load configure.json and gather CLI options", function() {
 
     // Load up util.
     var help = require("./util/helpers");
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
    * Tweaks the system path for environment specific variables that are passed
    * in or set in configure.json.
    */
-  grunt.registerTask("config-sys-path", "Modify the system path for this execution.", function() {
+  grunt.registerTask("config:sys-path", "Modify the system path for this execution.", function() {
     //   process.env.PATH = "/usr/local/Cellar/php54/5.4.42/bin" + process.env.PATH;
 
     var system = grunt.config("system");

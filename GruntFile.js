@@ -22,8 +22,8 @@ module.exports = function(grunt) {
   grunt.initConfig(config);
 
   // Always gather the config.
-  grunt.task.run("config-gather");
-  grunt.task.run("config-sys-path");
+  grunt.task.run("config:gather");
+  grunt.task.run("config:sys-path");
 
   // Default task.
   grunt.registerTask('default', ['availabletasks']);
