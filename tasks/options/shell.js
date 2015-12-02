@@ -10,6 +10,9 @@ module.exports = {
     command: "echo 'hello'"
   },
   deployercheckout: {
-    command: "sh scripts/deployercheckout.sh <%= build.branch %>"
+    command: "./scripts/deployercheckout.sh <%= build.branch %>"
+  },
+  "check-system-env": {
+    command: "./scripts/systemenv.sh"
   }
 };

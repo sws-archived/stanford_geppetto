@@ -14,6 +14,19 @@ module.exports = function(grunt) {
     var help = require("./util/helpers");
     var helpers = new help(grunt);
 
+    // Some system related items that should be available.
+    var system = {
+      "drush": "drush",
+      "mysql": "mysql",
+      "behat": "behat",
+      "php": "php"
+    };
+
+    var syskeys = Object.keys(system);
+    syskeys.forEach(function(key) {
+      grunt.config("system." + key, system[key]);
+    });
+
     // The first place we gather config is the config file.
     var defaults = grunt.file.readJSON('configure.json');
     grunt.config("defaults", defaults);
@@ -43,6 +56,28 @@ module.exports = function(grunt) {
           grunt.config(groupname + "." + key, options[groupname][key]);
         }
       });
+    });
+
+  });
+
+  /**
+   * Tweaks the system path for environment specific variables that are passed
+   * in or set in configure.json.
+   */
+  grunt.registerTask("config-sys-path", "Modify the system path for this execution.", function() {
+    //   process.env.PATH = "/usr/local/Cellar/php54/5.4.42/bin" + process.env.PATH;
+
+    var system = grunt.config("system");
+    var keys = Object.keys(system);
+
+    keys.forEach(function(key){
+      var value = system[key];
+      var broken = value.split("/");
+      if (broken.length > 1) {
+        broken.pop();
+        value = broken.join("/");
+        process.env.PATH = ":" + value + process.env.PATH;
+      }
     });
 
   });
