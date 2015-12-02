@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     // Check for existance of environment file.
     var buildType = grunt.config("build.type");
     var buildEnvironment = grunt.config("build.environment");
-    var path = grunt.template.process("stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.environment %>.make", {data:{build:{type:buildType,environment:buildEnvironment}}});
+    var path = grunt.template.process("stanford-jumpstart-deployer/<%= build.type %>/environment/<%= build.environment %>.make", {data:{build:{type:buildType,environment:buildEnvironment}}});
     var isFile = grunt.file.exists(path);
 
     // If no file let the user know and carry on.

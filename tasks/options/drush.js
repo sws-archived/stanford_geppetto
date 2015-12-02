@@ -5,7 +5,7 @@ module.exports = {
   deploy: {
     args: [
       'make',
-      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
+      "stanford-jumpstart-deployer/<%= build.type %>/product/<%= build.product %>/<%= build.product %>.make",
       "<%= build.webserver_root %><%= build.dest %>",
       "--working-copy",
       "-y",
@@ -19,7 +19,21 @@ module.exports = {
   upgrade: {
     args: [
       'make',
-      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
+      "stanford-jumpstart-deployer/<%= build.type %>/product/<%= build.product %>/<%= build.product %>.make",
+      "<%= build.webserver_root %><%= build.dest %>",
+      "--working-copy",
+      "-y",
+      "-v",
+      "--no-cache",
+      "--ignore-checksums",
+      "--no-core",
+      "--concurrency=4"
+    ]
+  },
+  environment: {
+    args: [
+      'make',
+      "stanford-jumpstart-deployer/<%= build.type %>/environment/<%= build.environment %>.make",
       "<%= build.webserver_root %><%= build.dest %>",
       "--working-copy",
       "-y",
@@ -37,18 +51,11 @@ module.exports = {
       "--root=<%= build.webserver_root %><%= build.dest %>"
     ]
   },
-  environment: {
+  ipdb: {
     args: [
-      'make',
-      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.environment %>.make",
-      "<%= build.webserver_root %><%= build.dest %>",
-      "--working-copy",
+      'ipdb',
       "-y",
-      "-v",
-      "--no-cache",
-      "--ignore-checksums",
-      "--no-core",
-      "--concurrency=4"
+      "--root=<%= build.webserver_root %><%= build.dest %>"
     ]
   },
   install: {

@@ -44,7 +44,6 @@ function Helpers(grunt) {
   this.getBuildTypes = function() {
     return [
       'development',
-      'verification',
       'production'
     ];
   };
