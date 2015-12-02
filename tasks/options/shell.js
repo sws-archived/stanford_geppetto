@@ -14,8 +14,5 @@ module.exports = {
   },
   "check-system-env": {
     command: "./scripts/systemenv.sh"
-  },
-  "alias-system-env": {
-    command: "./scripts/systemalias.sh <%= system.drush %> <%= system.mysql %> <%= system.php %> <%= system.behat %>"
   }
 };
