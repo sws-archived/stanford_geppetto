@@ -1,13 +1,12 @@
 /**
- * Drupal Installation related custom grunt tasks.
+ * Stanford sites related grunt tasks.
  */
 module.exports = function(grunt) {
-
 
   /**
    * Sort out what configuration we have and prompt for the rest.
    */
-  grunt.registerTask("prompt-drush-install", "Sort out what configuration we have and prompt for the rest", function() {
+  grunt.registerTask("prompt-sites-clone", "Sort out what configuration we have and prompt for the rest.", function() {
 
     // Load up util.
     // Requirements.
@@ -22,39 +21,28 @@ module.exports = function(grunt) {
     var options = grunt.config("cliopts");
 
     // Store these for later.
-    var keys = Object.keys(options.install);
+    var keys = Object.keys(options.sites);
 
     // Clean out null values and merge the two together.
     helpers.deleteNullProperties(options, true);
     var combined = {
-      "build": absorb(options.install, defaults.build, true, true)
+      "sites": absorb(options.sites, defaults.sites, true, true)
     };
+
+    // Steal some settings from build...
+    if (typeof combined.sites["webserver_root"] == "undefined") {
+      if (typeof defaults.build.webserver_root !== "undefined") {
+        combined.sites["webserver_root"] = defaults.build.webserver_root;
+      }
+    }
 
     // Prompt for anything we dont have.
     for (var i in keys) {
       // Prompt if nothing.
-      if (typeof combined.build[keys[i]] == "undefined") {
+      if (typeof combined.sites[keys[i]] == "undefined") {
         grunt.task.run("prompt:" + keys[i]);
       }
     }
-
-  });
-
-
-  /**
-   * After an installation has completed.
-   */
-  grunt.registerTask('finish-installation', 'Finish up with some helper functions.', function() {
-
-    var env = grunt.config("build.environment");
-
-    // If the environment is local lets set the admin username and pass.
-    if (env == "local") {
-      grunt.task.run("drush:adminadmin");
-    }
-
-    // Always run this.
-    grunt.task.run("drush:loginuli");
 
   });
 

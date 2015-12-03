@@ -38,13 +38,23 @@ module.exports = function(grunt) {
   });
 
   /**
-   * Install a Drupal site from an installation profile.
+   * Upgrade a Drupal installation in place.
    */
   grunt.registerTask('build:upgrade', 'Update a Drupal sites files and run updates.', function() {
     grunt.task.run("prompt-build-upgrade");
     grunt.task.run("config:alter-build-install");
     grunt.task.run("drush:upgrade");
     grunt.task.run("drush:updb");
+  });
+
+  /**
+   * Get a copy of a site from sites.
+   */
+  grunt.registerTask('sites:clone', 'Get a copy of a site from sites.', function() {
+    grunt.task.run("prompt-sites-clone");
+    grunt.task.run("chmod:cleansitesclone");
+    grunt.task.run("clean:sitesclone");
+    grunt.task.run("drush:sitesard");
   });
 
 };

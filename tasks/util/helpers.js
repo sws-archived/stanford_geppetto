@@ -156,6 +156,12 @@ function Helpers(grunt) {
         "type":           grunt.option("build-type"),
         "dest":           grunt.option("build-directory"),
         "webserver_root": grunt.option("build-webserver-root")
+      },
+      "sites": {
+        "drush_alias":    grunt.option("sites-drush-alias"),
+        "dest":           grunt.option("build-directory"),
+        "dbname":         grunt.option("build-database-name"),
+        "webserver_root": grunt.option("build-webserver-root")
       }
     };
   };

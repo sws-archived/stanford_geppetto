@@ -16,5 +16,8 @@ module.exports = {
   },
   gitrepos: {
     src: ["stanford-jumpstart-deployer", "linky_clicky"]
+  },
+  sitesclone: {
+    src: ["<%= sites.webserver_root %><%= sites.dest %>"]
   }
 };

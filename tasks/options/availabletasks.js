@@ -13,7 +13,8 @@ module.exports = {
         'clone:linky-clicky',
         'clone:repos',
         'pull:deployer',
-        'shell'
+        'shell',
+        'sites:clone'
       ],
       groups: {
         'Build and install tasks': [
@@ -27,6 +28,9 @@ module.exports = {
           'clone:linky-clicky',
           'clone:repos',
           'pull:deployer',
+        ],
+        'Stanford sites tasks': [
+          'sites:clone'
         ]
       }
     }

@@ -119,6 +119,18 @@ var cf = {
         }
       ]
     }
+  },
+  drush_alias: {
+    options: {
+      questions: [
+        {
+          config: 'sites.drush_alias',
+          type: 'input',
+          message: "What is your drush alias for the site you want to clone? eg: @sse.ds_jumpstart",
+          default: "@sse.ds_sws-build-jsv"
+        }
+      ]
+    }
   }
 };
 
