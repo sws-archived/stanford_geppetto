@@ -13,5 +13,8 @@
     "dbuser": "root",
     "dbpass": "root",
     "branch": "7.x-5.x"
+  },
+  "sites": {
+    "sunetid": "sheamck"
   }
 }

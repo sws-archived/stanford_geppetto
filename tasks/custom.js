@@ -55,6 +55,8 @@ module.exports = function(grunt) {
     grunt.task.run("chmod:cleansitesclone");
     grunt.task.run("clean:sitesclone");
     grunt.task.run("drush:sitesard");
+    grunt.task.run("sites:scp:arr");
   });
+
 
 };

@@ -159,6 +159,7 @@ function Helpers(grunt) {
       },
       "sites": {
         "drush_alias":    grunt.option("sites-drush-alias"),
+        "sunetid":        grunt.option("sites-sunetid"),
         "dest":           grunt.option("build-directory"),
         "dbname":         grunt.option("build-database-name"),
         "webserver_root": grunt.option("build-webserver-root")

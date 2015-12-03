@@ -18,6 +18,6 @@ module.exports = {
     src: ["stanford-jumpstart-deployer", "linky_clicky"]
   },
   sitesclone: {
-    src: ["<%= sites.webserver_root %><%= sites.dest %>"]
+    src: ["<%= sites.webserver_root %><%= build.dest %>"]
   }
 };

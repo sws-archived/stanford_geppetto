@@ -33,6 +33,7 @@ module.exports = function(grunt) {
     if (typeof combined.sites["webserver_root"] == "undefined") {
       if (typeof defaults.build.webserver_root !== "undefined") {
         combined.sites["webserver_root"] = defaults.build.webserver_root;
+        grunt.config("sites.webserver_root", defaults.build.webserver_root);
       }
     }
 

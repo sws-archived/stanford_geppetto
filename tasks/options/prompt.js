@@ -131,6 +131,17 @@ var cf = {
         }
       ]
     }
+  },
+  sunetid: {
+    options: {
+      questions: [
+        {
+          config: 'sites.sunetid',
+          type: 'input',
+          message: "What is your sunetid"
+        }
+      ]
+    }
   }
 };
 

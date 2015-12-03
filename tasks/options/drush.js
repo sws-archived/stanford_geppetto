@@ -86,7 +86,7 @@ module.exports = {
       '<%= sites.drush_alias %>',
       "ard",
       "--destination=/afs/ir/group/webservices/backups/" + process.env.USER + "-copy.tar.gz",
-      "--overwrite",
+      "--overwrite"
     ]
   }
 };
