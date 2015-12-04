@@ -58,5 +58,12 @@ module.exports = function(grunt) {
     grunt.task.run("sites:scp:arr");
   });
 
+  /**
+   * Create the sites drush alias file.
+   */
+  grunt.registerTask('sites:drush-aliases', 'Generate a drush alias file for the sites environment.', function() {
+    grunt.task.run("prompt-sites-drush-aliases");
+    grunt.task.run("copy:drushaliases");
+  });
 
 };

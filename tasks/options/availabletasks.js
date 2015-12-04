@@ -14,7 +14,8 @@ module.exports = {
         'clone:repos',
         'pull:deployer',
         'shell',
-        'sites:clone'
+        'sites:clone',
+        'sites:drush-aliases'
       ],
       groups: {
         'Build and install tasks': [
@@ -30,7 +31,8 @@ module.exports = {
           'pull:deployer',
         ],
         'Stanford sites tasks': [
-          'sites:clone'
+          'sites:clone',
+          'sites:drush-aliases'
         ]
       }
     }
