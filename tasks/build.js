@@ -125,4 +125,34 @@ module.exports = function(grunt) {
     }
   });
 
+  /**
+   *  Set the base url in settings.php
+   *  Assuming everything is in sites/default for now.
+   *  @todo, work with multiple sites folders.
+   */
+  grunt.registerTask("build:settings:baseurl", "Set the base url in settings.php", function() {
+
+    var base = grunt.option("baseurl");
+
+    if (typeof base !== "string") {
+      grunt.log.debug("WARNING: No base url provided. settings.php left alone.");
+      return;
+    }
+
+    // Allow mods.
+    grunt.config("build.webserver_root", "/httpdocs/");
+    grunt.config("build.dest", "jsa.su.dev");
+    grunt.task.run("force:chmod:settingsphp");
+
+    var rreplace = require("replace");
+    var settings_path = grunt.config("build.webserver_root") + grunt.config("build.dest") + "/sites/default/settings.php";
+
+    rreplace({
+      regex: "\# \\\$base_url \= \'http\:\/\/www\.example\.com\'\;",
+      replacement: "$base_url = '" + base + "';",
+      paths: [settings_path],
+    });
+
+  });
+
 };

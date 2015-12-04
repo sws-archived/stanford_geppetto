@@ -14,6 +14,7 @@ module.exports = function(grunt) {
     grunt.task.run("prompt-build-install");
     grunt.task.run("config:alter-build-install");
     grunt.task.run("build:make:build");
+    grunt.task.run("build:settings:baseurl");
     grunt.task.run("drush:install");
     grunt.task.run("finish-installation");
   });
@@ -25,6 +26,7 @@ module.exports = function(grunt) {
     grunt.task.run("prompt-build");
     grunt.task.run("config:alter-build-install");
     grunt.task.run("build:make:build");
+    grunt.task.run("build:settings:baseurl");
   });
 
   /**

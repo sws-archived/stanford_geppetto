@@ -22,5 +22,10 @@ module.exports = {
       "<%= sites.webserver_root %><%= build.dest %>/**/private",
       "<%= sites.webserver_root %><%= build.dest %>/**/default"
     ]
+  },
+  settingsphp: {
+    src:[
+      '<%= build.webserver_root %><%= build.dest %>/**/settings.php'
+    ]
   }
 };
