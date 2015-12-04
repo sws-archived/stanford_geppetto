@@ -15,14 +15,16 @@ module.exports = {
         'pull:deployer',
         'shell',
         'sites:clone',
-        'sites:drush-aliases'
+        'sites:drush-aliases',
+        'local:drush-aliases'
       ],
       groups: {
         'Build and install tasks': [
           'build:make:install',
           'build:install',
           'build:make',
-          'build:upgrade'
+          'build:upgrade',
+          'local:drush-aliases'
         ],
         'Git and repository management': [
           'clone:deployer',

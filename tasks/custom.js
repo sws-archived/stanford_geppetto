@@ -63,7 +63,15 @@ module.exports = function(grunt) {
    */
   grunt.registerTask('sites:drush-aliases', 'Generate a drush alias file for the sites environment.', function() {
     grunt.task.run("prompt-sites-drush-aliases");
-    grunt.task.run("copy:drushaliases");
+    grunt.task.run("copy:drush_alias_sites");
+  });
+
+  /**
+   * Create the sites drush alias file.
+   */
+  grunt.registerTask('local:drush-aliases', 'Generate a drush alias file for your environment.', function() {
+    grunt.task.run("prompt-local-drush-aliases");
+    grunt.task.run("copy:drush_alias_local");
   });
 
 };
