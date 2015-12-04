@@ -86,7 +86,7 @@ TODO
 ---
 
 * Run behat tests with suites on deploy (probably too complicated to do in this project. Needs integration with other projects.)
-* Drush site alias integration (how so?)
+* Drush site alias integration: Generate sites.aliases.drushrc.php for all the sites stuff.
 * Remote build and sync (sites?)
 * Clone from remote (sites and anchorage)
 * Systems check: Check to see all software and values (mysql/php/apache) are enough to run Drupal.
