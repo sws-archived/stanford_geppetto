@@ -140,8 +140,6 @@ module.exports = function(grunt) {
     }
 
     // Allow mods.
-    grunt.config("build.webserver_root", "/httpdocs/");
-    grunt.config("build.dest", "jsa.su.dev");
     grunt.task.run("force:chmod:settingsphp");
 
     var rreplace = require("replace");
