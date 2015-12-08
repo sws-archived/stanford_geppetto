@@ -85,10 +85,10 @@ module.exports = function(grunt) {
    */
   grunt.registerTask("sites:scp:arr", "get file", function() {
     scp.get({
-      file: '/afs/ir/group/webservices/backups/' + process.env.USER + '-copy.tar.gz', // remote file to grab
-      user: '<%= sites.sunetid %>',   // username to authenticate as on remote system
-      host: 'sites1.stanford.edu',   // remote host to transfer from, set up in your ~/.ssh/config
-      path: '<%= sites.webserver_root %>' + process.env.USER + '-copy.tar.gz'           // local path to save to (this would result in a ~/file.txt on the local machine)
+      file: '/afs/ir/group/webservices/backups/' + process.env.USER + '-copy.tar.gz',
+      user: '<%= sites.sunetid %>',
+      host: 'sites1.stanford.edu',
+      path: '<%= sites.webserver_root %>' + process.env.USER + '-copy.tar.gz'
     });
   });
 
