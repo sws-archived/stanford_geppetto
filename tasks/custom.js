@@ -58,6 +58,7 @@ module.exports = function(grunt) {
     grunt.task.run("clean:sitesclone");
     grunt.task.run("drush:sitesard");
     grunt.task.run("sites:scp:arr");
+    grunt.task.run("shell:scp-arr-backup");
   });
 
   /**
