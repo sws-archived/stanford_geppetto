@@ -84,6 +84,7 @@ module.exports = function(grunt) {
    * Grab the drush ard file from the server.
    */
   grunt.registerTask("sites:scp:arr", "get file", function() {
+    var scp = require("scp");
     scp.get({
       file: '/afs/ir/group/webservices/backups/' + process.env.USER + '-copy.tar.gz',
       user: '<%= sites.sunetid %>',
