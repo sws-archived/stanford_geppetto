@@ -117,6 +117,26 @@ module.exports = function(grunt) {
   });
 
   /**
+   * Sync a local site to the stanford sites environment.
+   * ---------------------------------------------------------------------------
+   */
+  grunt.registerTask('sites:sync-up', 'Syncronize a local site to the Stanford sites environment.', function() {
+
+    // Steps
+    // 0. BACKUP ALL THE THINGS.
+    // 1. Dump database
+    // 2. Sync up files to sites somewhere.
+    // 3. Copy new modules and contrib in to place with no dupes.
+    // 3.a Rsync files.
+    // 4. Restore database
+    // 5. Rebuild registry
+
+    console.log(process);
+
+  });
+
+
+  /**
    * Create the sites drush alias file.
    * ---------------------------------------------------------------------------
    */

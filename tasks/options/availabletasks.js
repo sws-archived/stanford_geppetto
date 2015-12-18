@@ -16,7 +16,8 @@ module.exports = {
         'shell',
         'sites:clone',
         'sites:drush-aliases',
-        'local:drush-aliases'
+        'local:drush-aliases',
+        'build:upgrade:sites'
       ],
       groups: {
         'Build and install tasks': [
@@ -34,7 +35,8 @@ module.exports = {
         ],
         'Stanford sites tasks': [
           'sites:clone',
-          'sites:drush-aliases'
+          'sites:drush-aliases',
+          'build:upgrade:sites'
         ]
       }
     }

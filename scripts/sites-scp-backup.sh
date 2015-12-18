@@ -7,21 +7,22 @@ DBPASS=$5
 DBNAME=$6
 DBWHERE=$7
 DEST=$8
+TMPPATH=$9
+TMPFILE="$TMPPATH"sites-copy.tar.gz
 INSTALLPATH=$WEBSERVERROOT$DEST
 
 # Grab the files
 echo "Grabbing tar ball from the sites environment"
-/usr/bin/scp $SUNET@sites1.stanford.edu:/afs/ir/group/webservices/backups/$USERNAME-copy.tar.gz $WEBSERVERROOT/sites-copy.tar.gz
+/usr/bin/scp $SUNET@sites1.stanford.edu:/afs/ir/group/webservices/backups/$USERNAME-copy.tar.gz $TMPFILE
 
 echo "Restoring site to: " $INSTALLPATH
 
-echo "Restoring site from tar ball"
 if [ -d $INSTALLPATH ]; then
   echo "Directory already exists. Cannot restore on to an existing directory."
   exit;
 fi
 
-drush arr $WEBSERVERROOT/sites-copy.tar.gz --db-url=mysql://$DBUSER:$DBPASS@$DBWHERE/$DBNAME --destination=$INSTALLPATH --debug --db-su=$DBUSER --db-su-pw=$DBPASS
+drush arr $TMPFILE --db-url=mysql://$DBUSER:$DBPASS@$DBWHERE/$DBNAME --destination=$INSTALLPATH --debug --db-su=$DBUSER --db-su-pw=$DBPASS
 
 # chmod -Rf 0755 $INSTALLPATH
 # chmod -Rf 0777 $INSTALLPATH/sites/default/files
