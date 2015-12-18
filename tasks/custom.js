@@ -109,9 +109,11 @@ module.exports = function(grunt) {
     grunt.task.run("prompt-sites-clone");
     grunt.task.run("chmod:cleansitesclone");
     grunt.task.run("clean:sitesclone");
-    // grunt.task.run("drush:sitesard");
+    grunt.task.run("drush:sitesard");
     grunt.task.run("shell:scp-arr-backup");
     grunt.task.run("sed:remove-conf-profile");
+    grunt.task.run("build:settings:baseurl");
+    grunt.task.run("finish-installation");
   });
 
   /**

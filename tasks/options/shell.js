@@ -16,6 +16,6 @@ module.exports = {
     command: "./scripts/systemenv.sh"
   },
   "scp-arr-backup": {
-    command: "./scripts/sites-scp-backup.sh <%= sites.sunetid %> " + process.env.USER + " <%= build.webserver_root %> <%= build.dbuser %> <%= build.dbpass %> <%= build.dbname %> <%= build.dest %>"
+    command: "./scripts/sites-scp-backup.sh <%= sites.sunetid %> " + process.env.USER + " <%= build.webserver_root %> <%= build.dbuser %> <%= build.dbpass %> <%= build.dbname %> <%= build.dbwhere %> <%= build.dest %>"
   }
 };

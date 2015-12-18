@@ -4,14 +4,16 @@ USERNAME=$2
 WEBSERVERROOT=$3
 DBUSER=$4
 DBPASS=$5
-DBWHERE=$6
-DBNAME=$7
+DBNAME=$6
+DBWHERE=$7
 DEST=$8
 INSTALLPATH=$WEBSERVERROOT$DEST
 
 # Grab the files
 echo "Grabbing tar ball from the sites environment"
 /usr/bin/scp $SUNET@sites1.stanford.edu:/afs/ir/group/webservices/backups/$USERNAME-copy.tar.gz $WEBSERVERROOT/sites-copy.tar.gz
+
+echo "Restoring site to: " $INSTALLPATH
 
 echo "Restoring site from tar ball"
 if [ -d $INSTALLPATH ]; then

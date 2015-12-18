@@ -145,6 +145,14 @@ module.exports = function(grunt) {
     var rreplace = require("replace");
     var settings_path = grunt.config("build.webserver_root") + grunt.config("build.dest") + "/sites/default/settings.php";
 
+    // First clear out any defined options.
+    rreplace({
+      regex: "\\\$base_url \= \'https\:\/\/.*",
+      replacement: "",
+      paths: [settings_path],
+    });
+
+    // Then take over the base path one.
     rreplace({
       regex: "\# \\\$base_url \= \'http\:\/\/www\.example\.com\'\;",
       replacement: "$base_url = '" + base + "';",
