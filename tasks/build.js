@@ -144,7 +144,7 @@ module.exports = function(grunt) {
     rreplace({
       regex: "\\\$base_url \= \'https\:\/\/.*",
       replacement: "",
-      paths: [settings_path],
+      paths: [settings_path]
     });
 
     if (typeof base !== "string") {
@@ -156,7 +156,7 @@ module.exports = function(grunt) {
     rreplace({
       regex: "\# \\\$base_url \= \'http\:\/\/www\.example\.com\'\;",
       replacement: "$base_url = '" + base + "';",
-      paths: [settings_path],
+      paths: [settings_path]
     });
 
   });
