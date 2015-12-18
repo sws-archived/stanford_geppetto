@@ -27,6 +27,54 @@ module.exports = {
       "--no-cache",
       "--ignore-checksums",
       "--no-core",
+      "--overwrite",
+      "--concurrency=4"
+    ]
+  },
+  "upgrade-legacy": {
+    args: [
+      'make',
+      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
+      "<%= build.webserver_root %><%= build.dest %>",
+      "--working-copy",
+      "-y",
+      "-v",
+      "--no-cache",
+      "--ignore-checksums",
+      "--no-core",
+      "--overwrite",
+      "--concurrency=4"
+    ]
+  },
+  "upgrade-sites": {
+    args: [
+      'make',
+      "stanford-jumpstart-deployer/<%= build.type %>/product/<%= build.product %>/<%= build.product %>.make",
+      "<%= build.webserver_root %><%= build.dest %>",
+      "--working-copy",
+      "-y",
+      "-v",
+      "--no-cache",
+      "--ignore-checksums",
+      "--no-core",
+      "--overwrite",
+      "--contrib-destination=sites/default",
+      "--concurrency=4"
+    ]
+  },
+  "upgrade-legacy-sites": {
+    args: [
+      'make',
+      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
+      "<%= build.webserver_root %><%= build.dest %>",
+      "--working-copy",
+      "-y",
+      "-v",
+      "--no-cache",
+      "--ignore-checksums",
+      "--no-core",
+      "--overwrite",
+      "--contrib-destination=sites/default",
       "--concurrency=4"
     ]
   },
@@ -54,6 +102,13 @@ module.exports = {
   ipdb: {
     args: [
       'ipdb',
+      "-y",
+      "--root=<%= build.webserver_root %><%= build.dest %>"
+    ]
+  },
+  "features-revert-all": {
+    args: [
+      'fra',
       "-y",
       "--root=<%= build.webserver_root %><%= build.dest %>"
     ]

@@ -59,12 +59,13 @@ module.exports = function(grunt) {
       grunt.task.run("drush:upgrade");
     }
 
+    grunt.task.run("drush:updb");
+
     // If revert is set.
-    if (grunt.config("upgrade.frevert") == "Y") {
+    if (grunt.option("features-revert-all") == true) {
       grunt.task.run("drush:features-revert-all");
     }
 
-    grunt.task.run("drush:updb");
   });
 
   /**
@@ -84,12 +85,13 @@ module.exports = function(grunt) {
       grunt.task.run("drush:upgrade-sites");
     }
 
+    grunt.task.run("drush:updb");
+
     // If revert is set.
-    if (grunt.config("upgrade.frevert") == "Y") {
+    if (grunt.option("features-revert-all") == true) {
       grunt.task.run("drush:features-revert-all");
     }
 
-    grunt.task.run("drush:updb");
   });
 
   /**

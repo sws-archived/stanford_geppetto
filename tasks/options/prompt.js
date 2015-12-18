@@ -120,6 +120,17 @@ var cf = {
       ]
     }
   },
+  frevert: {
+    options: {
+      questions: [
+        {
+          config: 'update.frevert',
+          type: 'confirm',
+          message: "Would you like to revert all the features?",
+        }
+      ]
+    }
+  },
   drush_alias: {
     options: {
       questions: [
