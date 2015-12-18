@@ -85,6 +85,13 @@ module.exports = function(grunt) {
       grunt.task.run("drush:upgrade-sites");
     }
 
+    // Let Drupal know about the new stuff by rebuilding registry.
+    grunt.task.run("drush:rr");
+
+    // Remove the installation profile variable on settings.php.
+    grunt.task.run("sed:remove-conf-profile");
+
+    // Run the updates.
     grunt.task.run("drush:updb");
 
     // If revert is set.
@@ -104,6 +111,7 @@ module.exports = function(grunt) {
     grunt.task.run("clean:sitesclone");
     // grunt.task.run("drush:sitesard");
     grunt.task.run("shell:scp-arr-backup");
+    grunt.task.run("sed:remove-conf-profile");
   });
 
   /**

@@ -49,7 +49,7 @@ module.exports = {
   "upgrade-sites": {
     args: [
       'make',
-      "stanford-jumpstart-deployer/<%= build.type %>/product/<%= build.product %>/<%= build.product %>.make",
+      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
       "<%= build.webserver_root %><%= build.dest %>",
       "--working-copy",
       "-y",
@@ -109,6 +109,13 @@ module.exports = {
   "features-revert-all": {
     args: [
       'fra',
+      "-y",
+      "--root=<%= build.webserver_root %><%= build.dest %>"
+    ]
+  },
+  rr: {
+    args: [
+      'rr',
       "-y",
       "--root=<%= build.webserver_root %><%= build.dest %>"
     ]
