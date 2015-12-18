@@ -163,6 +163,10 @@ function Helpers(grunt) {
         "dest":           grunt.option("build-directory"),
         "dbname":         grunt.option("build-database-name"),
         "webserver_root": grunt.option("build-webserver-root")
+      },
+      "local": {
+        "local_drush_alias": grunt.option("local-drush-alias"),
+        "sites_drush_alias": grunt.option("sites-drush-alias")
       }
     };
   };

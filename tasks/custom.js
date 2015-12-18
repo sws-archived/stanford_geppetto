@@ -131,7 +131,7 @@ module.exports = function(grunt) {
     // 4. Restore database
     // 5. Rebuild registry
 
-    console.log(process);
+    grunt.task.run("drush:localard");
 
   });
 

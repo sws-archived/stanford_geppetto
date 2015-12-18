@@ -23,7 +23,3 @@ if [ -d $INSTALLPATH ]; then
 fi
 
 drush arr $TMPFILE --db-url=mysql://$DBUSER:$DBPASS@$DBWHERE/$DBNAME --destination=$INSTALLPATH --debug --db-su=$DBUSER --db-su-pw=$DBPASS
-
-# chmod -Rf 0755 $INSTALLPATH
-# chmod -Rf 0777 $INSTALLPATH/sites/default/files
-# rm $INSTALLPATH/sites/default/settings.local.php

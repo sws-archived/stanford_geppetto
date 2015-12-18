@@ -150,5 +150,13 @@ module.exports = {
       "--destination=/afs/ir/group/webservices/backups/" + process.env.USER + "-copy.tar.gz",
       "--overwrite"
     ]
+  },
+  localard: {
+    args: [
+      '<%= local.local_drush_alias %>',
+      "ard",
+      "--destination=" + process.env.TMPDIR + "sites-deploy.tar.gz",
+      "--overwrite"
+    ]
   }
 };
