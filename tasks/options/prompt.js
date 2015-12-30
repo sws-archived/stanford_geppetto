@@ -143,6 +143,30 @@ var cf = {
       ]
     }
   },
+  local_drush_alias: {
+    options: {
+      questions: [
+        {
+          config: 'local.local_drush_alias',
+          type: 'input',
+          message: "What is your drush alias for the site you want to clone FROM? eg: @jumpstart.dev",
+          default: "@jumpstart.dev"
+        }
+      ]
+    }
+  },
+  sites_drush_alias: {
+    options: {
+      questions: [
+        {
+          config: 'local.sites_drush_alias',
+          type: 'input',
+          message: "What is your drush alias for the site you want to clone TO? eg: @sse.ds_jumpstart",
+          default: "@sse.ds_sws-build-jsv"
+        }
+      ]
+    }
+  },
   sunetid: {
     options: {
       questions: [

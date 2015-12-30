@@ -122,16 +122,29 @@ module.exports = function(grunt) {
    */
   grunt.registerTask('sites:sync-up', 'Syncronize a local site to the Stanford sites environment.', function() {
 
-    // Steps
-    // 0. BACKUP ALL THE THINGS.
-    // 1. Dump database
-    // 2. Sync up files to sites somewhere.
-    // 3. Copy new modules and contrib in to place with no dupes.
-    // 3.a Rsync files.
-    // 4. Restore database
-    // 5. Rebuild registry
+    // Prompt for the drush aliases variables.
+    grunt.task.run("prompt-local-to-sites");
 
+    // Create a local site archive.
     grunt.task.run("drush:localard");
+
+    // Move the archive to the sites environment.
+    grunt.task.run("sites:scp:ard");
+
+    // Backup the existing website.
+    // Drop the database.
+
+    // @todo: The above.
+
+    // Unpack the archive somewhere on AFS.
+    // Sync the files using the non-dupe script.
+    // Restore the database with new dump.
+    grunt.task.run("sites:scp:unpack");
+
+
+    // Clear all caches and registry.
+
+
 
   });
 
@@ -150,7 +163,9 @@ module.exports = function(grunt) {
    * ---------------------------------------------------------------------------
    */
   grunt.registerTask('local:drush-aliases', 'Generate a drush alias file for your environment.', function() {
+    // Get the needed info.
     grunt.task.run("prompt-local-drush-aliases");
+    // Create a local alias file.
     grunt.task.run("copy:drush_alias_local");
   });
 
