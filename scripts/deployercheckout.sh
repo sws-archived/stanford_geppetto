@@ -1,3 +1,4 @@
+#!/bin/bash
 # This script is responsible for pulling and syncing up the git repo
 # with the make files. Passed in variable can be a specific branch or tag.
 SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

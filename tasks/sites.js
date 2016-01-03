@@ -112,13 +112,21 @@ module.exports = function(grunt) {
       user: sunet,
       host: 'sites1.stanford.edu',
       path: '/afs/ir/group/webservices/backups/' + sunet + '-sync.tar.gz'
-    }, function(err, stdout, stderr) {
-      grunt.log.error(err);
-      grunt.log(stdout);
-      grunt.log.error(stderr);
     });
 
   });
+
+  /**
+   * Untars and unpacks an uploaded drush site archive.
+   * Runs sync script.
+   */
+  grunt.registerTask("sites:scp:unpack", "Unpack an uploaded site archive.", function() {
+    var sshexec = require('ssh-exec');
+    var sunet = grunt.config("sites.sunetid");
+    var server = "sites1.stanford.edu";
+    sshexec('touch iamhere.txt', sunet + '@' + server);
+  });
+
 
   /**
    * Sort out what configuration we have and prompt for the rest.
@@ -146,17 +154,19 @@ module.exports = function(grunt) {
       "sync": absorb(options.sync, defaults.sync, true, true)
     };
 
+    if (defaults.sites) {
+      if (defaults.sites['sunetid'] && typeof combined.sync['sunetid'] == "undefined") {
+        combined.sync['sunetid'] = defaults.sites['sunetid'];
+        grunt.config("sync.sunetid", defaults.sites['sunetid']);
+      }
+    }
+
     // Prompt for anything we dont have.
     for (var i in keys) {
       // Prompt if nothing.
       if (typeof combined.sync[keys[i]] == "undefined") {
         grunt.task.run("prompt:" + keys[i]);
       }
-    }
-
-    // Only need the sunet id for this one.
-    if (typeof combined.sites["sunetid"] == "undefined") {
-      grunt.task.run("prompt:sunetid");
     }
 
   });

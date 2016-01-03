@@ -1,3 +1,4 @@
+#!/bin/bash
 # Grab the backup from the sites environment
 SUNET=$1
 USERNAME=$2

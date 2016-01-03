@@ -139,7 +139,7 @@ module.exports = function(grunt) {
     // Unpack the archive somewhere on AFS.
     // Sync the files using the non-dupe script.
     // Restore the database with new dump.
-    grunt.task.run("sites:scp:unpack");
+    // grunt.task.run("sites:scp:unpack");
 
 
     // Clear all caches and registry.

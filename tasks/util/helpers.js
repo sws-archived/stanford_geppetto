@@ -166,7 +166,8 @@ function Helpers(grunt) {
       },
       "sync": {
         "local_drush_alias": grunt.option("local-drush-alias"),
-        "sites_drush_alias": grunt.option("sites-drush-alias")
+        "sites_drush_alias": grunt.option("sites-drush-alias"),
+        "sunetid":           grunt.option("sites-sunetid"),
       }
     };
   };
