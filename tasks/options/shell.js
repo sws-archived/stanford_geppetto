@@ -17,5 +17,8 @@ module.exports = {
   },
   "scp-arr-backup": {
     command: "./scripts/sites-scp-backup.sh <%= sites.sunetid %> " + process.env.USER + " <%= build.webserver_root %> <%= build.dbuser %> <%= build.dbpass %> <%= build.dbname %> <%= build.dbwhere %> <%= build.dest %> " + process.env.TMPDIR
+  },
+  "sites-sync-to-sites": {
+    command: "SUNET=<%= sync.sunetid %> SHORTNAME=<%= local.sites_drush_alias %> ./scripts/sites-sync-to-sites.sh"
   }
 };

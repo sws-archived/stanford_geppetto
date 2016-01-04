@@ -1,5 +1,5 @@
 /**
- * Available tasks list
+ * Available tasks list.
  */
 module.exports = {
   availabletasks: {
@@ -16,11 +16,12 @@ module.exports = {
         'shell',
         'sites:clone',
         'sites:drush-aliases',
+        'sites:sync-up',
         'local:drush-aliases',
         'build:upgrade:sites'
       ],
       groups: {
-        'Build and install tasks': [
+        'Local build and install tasks': [
           'build:make:install',
           'build:install',
           'build:make',
@@ -33,8 +34,9 @@ module.exports = {
           'clone:repos',
           'pull:deployer',
         ],
-        'Stanford sites tasks': [
+        'Stanford Sites tasks': [
           'sites:clone',
+          'sites:sync-up',
           'sites:drush-aliases',
           'build:upgrade:sites'
         ]

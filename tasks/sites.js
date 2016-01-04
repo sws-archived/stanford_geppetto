@@ -81,54 +81,6 @@ module.exports = function(grunt) {
   });
 
   /**
-   * Grab the drush ard file from the server.
-   */
-  grunt.registerTask("sites:scp:arr", "get file", function() {
-    var scp = require("scp");
-    scp.get({
-      file: '/afs/ir/group/webservices/backups/' + process.env.USER + '-copy.tar.gz',
-      user: '<%= sites.sunetid %>',
-      host: 'sites1.stanford.edu',
-      path: '<%= sites.webserver_root %>' + process.env.USER + '-copy.tar.gz'
-    });
-  });
-
-  /**
-   * Push the drush ard file to the server.
-   */
-  grunt.registerTask("sites:scp:ard", "put file", function() {
-
-    var sunet = grunt.config("sites.sunetid");
-    var fp = process.env.TMPDIR + "sites-deploy.tar.gz";
-
-    if (! grunt.file.exists(fp)) {
-      grunt.log.error("Cannot upload an archive file that does not exist.");
-      return false;
-    }
-
-    var scp = require("scp");
-    scp.send({
-      file: fp,
-      user: sunet,
-      host: 'sites1.stanford.edu',
-      path: '/afs/ir/group/webservices/backups/' + sunet + '-sync.tar.gz'
-    });
-
-  });
-
-  /**
-   * Untars and unpacks an uploaded drush site archive.
-   * Runs sync script.
-   */
-  grunt.registerTask("sites:scp:unpack", "Unpack an uploaded site archive.", function() {
-    var sshexec = require('ssh-exec');
-    var sunet = grunt.config("sites.sunetid");
-    var server = "sites1.stanford.edu";
-    sshexec('touch iamhere.txt', sunet + '@' + server);
-  });
-
-
-  /**
    * Sort out what configuration we have and prompt for the rest.
    */
   grunt.registerTask("prompt-local-to-sites", "Sort out what configuration we have and prompt for the rest.", function() {
@@ -171,5 +123,40 @@ module.exports = function(grunt) {
 
   });
 
+  /**
+   * Grab the drush ard file from the server.
+   */
+  grunt.registerTask("sites:scp:arr", "get file", function() {
+    var scp = require("scp");
+    scp.get({
+      file: '/afs/ir/group/webservices/backups/' + process.env.USER + '-copy.tar.gz',
+      user: '<%= sites.sunetid %>',
+      host: 'sites1.stanford.edu',
+      path: '<%= sites.webserver_root %>' + process.env.USER + '-copy.tar.gz'
+    });
+  });
+
+  /**
+   * Push the drush ard file to the server.
+   */
+  grunt.registerTask("sites:scp:ard", "put file", function() {
+
+    var sunet = grunt.config("sites.sunetid");
+    var fp = process.env.TMPDIR + "sites-deploy.tar.gz";
+
+    if (! grunt.file.exists(fp)) {
+      grunt.log.error("Cannot upload an archive file that does not exist.");
+      return false;
+    }
+
+    var scp = require("scp");
+    scp.send({
+      file: fp,
+      user: sunet,
+      host: 'sites1.stanford.edu',
+      path: '/afs/ir/group/webservices/backups/' + sunet + '-sync.tar.gz'
+    });
+
+  });
 
 };

@@ -131,20 +131,13 @@ module.exports = function(grunt) {
     // Move the archive to the sites environment.
     grunt.task.run("sites:scp:ard");
 
-    // Backup the existing website.
-    // Drop the database.
-
-    // @todo: The above.
-
     // Unpack the archive somewhere on AFS.
-    // Sync the files using the non-dupe script.
+    // Back up the existing site on sites.
+    // Sync the files using a non-dupe script.
     // Restore the database with new dump.
-    // grunt.task.run("sites:scp:unpack");
-
-
     // Clear all caches and registry.
 
-
+    grunt.task.run("shell:sites-sync-to-sites");
 
   });
 
