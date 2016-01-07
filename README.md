@@ -101,15 +101,27 @@ Psuedo Code for configure.json. Do not use this as real configuration.
   }
 }
 
+```
+Update
+----
+To update this package from the root of the directory run:
 
+```
+git pull origin 7.0.0
+or
+git pull origin 8.0.0
+then
+npm update
 
 ```
 
 Commands
 ----
 
+####`grunt`
+Get a list of all of the available functions. If you are going to remember one function remember this one.
 
-####`build:install` 
+####`grunt build:install` 
 Install a Drupal site installation profile. An equivalent function to `drush si`.
 
 Options avilable:
@@ -126,36 +138,37 @@ Options avilable:
 --build-database-user
 --build-database-pass
 --build-database-name
+--baseurl
+--legacy
 ```
 
-####`build:make`
+####`grunt build:make`
 Deploy Drupal site files. 
 
-####`build:make:install`
+####`grunt build:make:install`
 Build and install a Drupal site. 
 
-####`build:upgrade`
+####`grunt build:upgrade`
 Update a Drupal sites files and run updates. 
 
-####`local:drush-aliases`
+####`grunt build:upgrade:sites`
+Update a site that has been cloned from the Stanford sites environment to your local environment. This 
+function is slightly different than the `build:upgrade` function in that it has some specific to sites
+functionality that allow for a smoother upgrade and re-sync to sites process.
+
+####`grunt local:drush-aliases`
 Generate a drush alias file for your environment. 
 
-####`clone:linky-clicky`
-Get a fresh copy of the linky-clicky behat repository.
-
-####`clone:repos`
-Get a fresh copy of the git repositories used by this tool.
-
-####`pull:deployer`
-Pull the latest deployer branch.
-
-####`sites:clone`
+####`grunt sites:clone`
 Get a copy of a site from sites. 
 
-####`sites:drush-aliases`
+####`grunt sites:sync-up`
+Clone a local site up to the sites environment replacing what is currently on the sites environment.
+
+####`grunt sites:drush-aliases`
 Generate a drush alias file for the sites environment. 
 
-####`shell:check-system-env`
+####`grunt shell:check-system-env`
 Check system environment variables.
 
 
@@ -223,6 +236,15 @@ sites-drush-alias
 
 sites-sunetid
 	The sunet id used to connect to Stanford Sites servers. Used in ssh and drush commands.
+
+baseurl
+    The base url for the site you are building. eg: http://jumpstart.su.dev. Works with site build
+    and site clone.
+
+legacy	
+	A boolean value for wether or not the upgrade should use the 4.x drush make file structure. Set
+	to true if using anything before Jumpstart 5.x.
+	
 	
 ```
 
