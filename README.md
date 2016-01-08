@@ -151,6 +151,12 @@ Build and install a Drupal site.
 ####`grunt build:upgrade`
 Update a Drupal sites files and run updates. 
 
+Options available:
+
+```
+--features-revert-all
+```
+
 ####`grunt build:upgrade:sites`
 Update a site that has been cloned from the Stanford sites environment to your local environment. This 
 function is slightly different than the `build:upgrade` function in that it has some specific to sites
@@ -217,25 +223,25 @@ build-database-host
 
 build-database-user
 	The username used to connect to the database. This user should have the ability to create
-	databases on the server if you are going to be using it to build and make.
+	databases on the server if you are going to be using it to build and make. eg: root
 
 build-database-pass
-	The password for the database user. 
+	The password for the database user. eg: root
 
 build-database-name
 	The name of the database the task will use. If building and installing a new Drupal website
-	and the database does not exist this will be the name of the new database.
+	and the database does not exist this will be the name of the new database. eg: jumpstart_su_dev
 
 build-git-branch
 	The specific git branch or tag to set the Stanford Jumpstart Deployer to use when building
-	a Drupal website. This must be version 7.x-5.x or greater. 
+	a Drupal website. This must be version 7.x-5.x or greater.  eg: 7.x-4.7-dev+6
 
 sites-drush-alias
 	The drush alias of the Stanford Sites server environment instance you are working with.
 	eg: @sse.sws-build-jsv. This alias must be defined in your ~/.drush directory.
 
 sites-sunetid
-	The sunet id used to connect to Stanford Sites servers. Used in ssh and drush commands.
+	The sunet id used to connect to Stanford Sites servers. Used in ssh and drush commands. eg: sheamck
 
 baseurl
     The base url for the site you are building. eg: http://jumpstart.su.dev. Works with site build
@@ -243,9 +249,11 @@ baseurl
 
 legacy	
 	A boolean value for wether or not the upgrade should use the 4.x drush make file structure. Set
-	to true if using anything before Jumpstart 5.x.
-	
-	
+	to true if using anything before Jumpstart 5.x. eg: TRUE
+
+features-revert-all
+	A boolean value for wether or not to execute `drush fra -y` after the rest of the 
+	processes/updateshave completed. eg: TRUE
 ```
 
 
