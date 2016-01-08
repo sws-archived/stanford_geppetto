@@ -141,12 +141,20 @@ module.exports = function(grunt) {
    */
   grunt.registerTask("sites:scp:ard", "put file", function() {
 
+    grunt.log.subhead("Uploading site archive. Please be patient this could take a few mintues.");
+    var msg = setInterval(function(){ grunt.log.writeln("Upload in progress..."); }, 3000);
+
+    // This proces may take some time.
+    var done = this.async();
+
     var sunet = grunt.config("sites.sunetid");
     var fp = process.env.TMPDIR + "sites-deploy.tar.gz";
 
     if (! grunt.file.exists(fp)) {
       grunt.log.error("Cannot upload an archive file that does not exist.");
-      return false;
+      clearInterval(msg);
+      done(false);
+      return;
     }
 
     var scp = require("scp");
@@ -155,6 +163,17 @@ module.exports = function(grunt) {
       user: sunet,
       host: 'sites1.stanford.edu',
       path: '/afs/ir/group/webservices/backups/' + sunet + '-sync.tar.gz'
+    }, function (err, stdout, stderr) {
+      if (err !== null) {
+        grunt.log.error("Failed uploading site archive.");
+        grunt.log.error(err);
+        clearInterval(msg);
+        done(false);
+      }
+      else {
+        clearInterval(msg);
+        done();
+      }
     });
 
   });
