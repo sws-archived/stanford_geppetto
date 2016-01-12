@@ -47,9 +47,18 @@ module.exports = function(grunt) {
    * Alter config after it has been gathered and prompted for.
    */
   grunt.registerTask("config:alter-build-install", "Adjust the prompted settings for the build:install", function() {
+
     var product = grunt.config("build.product");
     var product_name = product.replace("-", "_");
-    grunt.config("build.product_name", "stanford_sites_" + product_name);
+
+    // For Jumpstart Products only.
+    if (product_name.search("jumpstart")) {
+      grunt.config("build.product_name", "stanford_sites_" + product_name);
+    }
+    else {
+       grunt.config("build.product_name", "stanford_" + product_name);
+    }
+
   });
 
 
