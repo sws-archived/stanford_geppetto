@@ -52,7 +52,7 @@ module.exports = function(grunt) {
     var product_name = product.replace("-", "_");
 
     // For Jumpstart Products only.
-    if (product_name.search("jumpstart")) {
+    if (product_name.search("jumpstart") !== -1) {
       grunt.config("build.product_name", "stanford_sites_" + product_name);
     }
     else {
