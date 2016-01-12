@@ -13,11 +13,12 @@ function Helpers(grunt) {
    */
   this.getProductTypes = function() {
     return [
-      { name:'JSV',     value: "jumpstart" },
-      { name:'JSPlus',  value: "jumpstart-plus" },
-      { name:'JSA',     value: "jumpstart-academic" },
-      { name:'JSVPSA',  value: "jumpstart-vpsa" },
-      { name:'JSE',     value: "jumpstart-engineering" },
+      { name:'JSV',         value: "jumpstart" },
+      { name:'JSPlus',      value: "jumpstart-plus" },
+      { name:'JSA',         value: "jumpstart-academic" },
+      { name:'JSVPSA',      value: "jumpstart-vpsa" },
+      { name:'JSE',         value: "jumpstart-engineering" },
+      { name:'DrupalCamp',  value: "drupalcamp" },
     ];
   };
 
