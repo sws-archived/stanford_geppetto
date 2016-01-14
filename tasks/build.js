@@ -6,17 +6,24 @@ module.exports = function(grunt) {
   /**
    * Drush make task
    */
-  grunt.registerTask('build:make:build',
-    "Drush make a site file structure.",
-    [
-      "shell:deployercheckout",
-      "chmod:cleanbuild",
-      "force:clean:build",
-      "drush:deploy",
-      "build:make:environment",
-      "notify:buildmake"
-    ]
-  );
+  grunt.registerTask('build:make:build', "Drush make a site file structure.", function() {
+
+    grunt.task.run("shell:deployercheckout");
+    grunt.task.run("chmod:cleanbuild");
+    grunt.task.run("force:clean:build");
+
+    // Legacy is for branch 7.x-4.x or less.
+    if (grunt.option("legacy")) {
+      grunt.task.run("drush:deploy-legacy");
+    }
+    else {
+      grunt.task.run("drush:deploy");
+      grunt.task.run("build:make:environment");
+    }
+
+    grunt.task.run("notify:buildmake");
+
+  });
 
   /**
    * Drush make environment

@@ -16,6 +16,20 @@ module.exports = {
       "--concurrency=4"
     ]
   },
+  "deploy-legacy": {
+    args: [
+      'make',
+      "stanford-jumpstart-deployer/make/<%= build.type %>/<%= build.product %>.make",
+      "<%= build.webserver_root %><%= build.dest %>",
+      "--working-copy",
+      "-y",
+      "-v",
+      "--no-cache",
+      "--ignore-checksums",
+      "--prepare-install",
+      "--concurrency=4"
+    ]
+  },
   upgrade: {
     args: [
       'make',
