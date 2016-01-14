@@ -11,11 +11,14 @@ if [ ! -z "$1" ]; then
   GITBRANCH=$1
 fi
 
-GITCHECKOUT=$GITREMOTENAME"/"$GITBRANCH
+GITCHECKOUT=$GITBRANCH
 
 if [ ! -d $REPOPATH ]; then
   git clone $GITREMOTE $REPOPATH
 fi
+
+# Remove local branch if we have one.
+GITREMOVE="$(git branch -D $GITCHECKOUT)"
 
 cd $REPOPATH
 git fetch $GITREMOTENAME
