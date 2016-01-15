@@ -19,6 +19,7 @@ fi
 
 # Remove local branch if we have one.
 GITREMOVE="$(git branch -D $GITCHECKOUT)"
+GITREMOVE2="$(git tag -d $GITCHECKOUT)"
 
 cd $REPOPATH
 git fetch $GITREMOTENAME
