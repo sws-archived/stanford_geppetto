@@ -3,7 +3,7 @@
 
 [sherakama](https://github.com/sherakama)
 
-A grunt task runner for building SWS Drupal sites and other misc tasks.
+A grunt task runner for building SWS Drupal sites and other tasks.
 
 Installation
 ----
@@ -128,6 +128,40 @@ Options avilable:
 
 ```
 --build-product  
+--build-environment
+--build-directory
+--build-webserver-root
+--build-database-type
+--build-database-host
+--build-database-user
+--build-database-pass
+--build-database-name
+--baseurl
+--legacy
+```
+
+####`grunt build:make`
+Deploy Drupal site's files. More or less a fancier `drush make`
+
+Options avilable:
+
+```
+--build-product  
+--build-type  
+--build-environment
+--build-directory
+--build-git-branch
+--build-webserver-root
+--legacy
+```
+
+####`grunt build:make:install`
+Build and install a Drupal site. 
+
+Options avilable:
+
+```
+--build-product  
 --build-type  
 --build-environment
 --build-directory
@@ -142,12 +176,6 @@ Options avilable:
 --legacy
 ```
 
-####`grunt build:make`
-Deploy Drupal site files. 
-
-####`grunt build:make:install`
-Build and install a Drupal site. 
-
 ####`grunt build:upgrade`
 Update a Drupal sites files and run updates. 
 
@@ -155,6 +183,14 @@ Options available:
 
 ```
 --features-revert-all
+--build-product  
+--build-type  
+--build-environment
+--build-directory
+--build-git-branch
+--build-webserver-root
+--baseurl
+--legacy
 ```
 
 ####`grunt build:upgrade:sites`
@@ -162,20 +198,61 @@ Update a site that has been cloned from the Stanford sites environment to your l
 function is slightly different than the `build:upgrade` function in that it has some specific to sites
 functionality that allow for a smoother upgrade and re-sync to sites process.
 
+Options avilable:
+
+```
+--features-revert-all
+--build-product  
+--build-type  
+--build-environment
+--build-directory
+--build-git-branch
+--build-webserver-root
+--baseurl
+--legacy
+```
+
 ####`grunt local:drush-aliases`
-Generate a drush alias file for your environment. 
+Generate a drush alias file for your environment. This will place a file at 
+`~/.drush/local.aliases.drushrc.php`. Once that file is there you may have to do some additional 
+configuration to get it to work.
 
 ####`grunt sites:clone`
 Get a copy of a site from sites. 
 
+Options avilable:
+
+```
+--sites-drush-alias
+--sites-sunetid
+--build-directory
+--build-webserver-root
+--build-database-type
+--build-database-host
+--build-database-user
+--build-database-pass
+--build-database-name
+--baseurl
+```
+
 ####`grunt sites:sync-up`
 Clone a local site up to the sites environment replacing what is currently on the sites environment.
 
+Options avilable:
+
+```
+--local-drush-alias
+--sites-drush-alias
+--sites-sunetid
+```
+
 ####`grunt sites:drush-aliases`
-Generate a drush alias file for the sites environment. 
+Generate a drush alias file for the sites environment. This will generate a file at `~/.drush/sites.aliases.drushrc.php`. Once
+this file is in place you will then be able to use Drush aliases to run commands on Stanford Sites websites. eg: drush @sse.ds\_sws-build-jsv and @uat.ds\_sws-build-jsv.
 
 ####`grunt shell:check-system-env`
-Check system environment variables.
+Check system environment variables. Outputs the paths to the environment software that this tool uses. If anything is missing please get your
+nearest friendly developer to help.
 
 
 Options
@@ -254,6 +331,12 @@ legacy
 features-revert-all
 	A boolean value for wether or not to execute `drush fra -y` after the rest of the 
 	processes/updateshave completed. eg: TRUE
+	
+local-drush-alias
+	The full drush alias of the local site which is being used. eg: @jsv.su.dev
+	
+sites-drush-alias
+	The full drush alias of the Stanford Sites website that is being used. eg: @sse.ds_sws-build-jsv
 ```
 
 
