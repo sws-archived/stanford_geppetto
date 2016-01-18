@@ -14,7 +14,7 @@ INSTALLPATH=$WEBSERVERROOT$DEST
 
 # Grab the files
 echo "Grabbing tar ball from the sites environment"
-/usr/bin/scp $SUNET@sites1.stanford.edu:/afs/ir/group/webservices/backups/$USERNAME-copy.tar.gz $TMPFILE
+/usr/bin/scp $SUNET@sites2.stanford.edu:/afs/ir/group/webservices/backups/$USERNAME-copy.tar.gz $TMPFILE
 
 echo "Restoring site to: " $INSTALLPATH
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 # Remote ssh execution
-ssh $SUNET@sites1.stanford.edu 'bash -s' < $SCRIPT
+ssh $SUNET@sites2.stanford.edu 'bash -s' < $SCRIPT

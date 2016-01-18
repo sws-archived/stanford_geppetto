@@ -6,4 +6,4 @@ CLEANNAME=${SHORTNAME/\@sse\./}
 CLEANNAME=${CLEANNAME/ds\_/}
 
 # Remote ssh execution
-ssh -T $SUNET@sites1.stanford.edu "SUNET=$SUNET SHORTNAME=$CLEANNAME /afs/ir/group/webservices/tools/geppetto/sync.sh"
+ssh -T $SUNET@sites2.stanford.edu "SUNET=$SUNET SHORTNAME=$CLEANNAME /afs/ir/group/webservices/tools/geppetto/sync.sh"

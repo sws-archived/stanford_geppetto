@@ -127,13 +127,32 @@ module.exports = function(grunt) {
    * Grab the drush ard file from the server.
    */
   grunt.registerTask("sites:scp:arr", "get file", function() {
+
+    grunt.log.subhead("Downloading site archive file.");
+    var msg = setInterval(function(){ grunt.log.writeln("Download in progress..."); }, 3000);
+    // This proces may take some time.
+    var done = this.async();
+
     var scp = require("scp");
     scp.get({
       file: '/afs/ir/group/webservices/backups/' + process.env.USER + '-copy.tar.gz',
       user: '<%= sites.sunetid %>',
-      host: 'sites1.stanford.edu',
+      host: 'sites2.stanford.edu',
       path: '<%= sites.webserver_root %>' + process.env.USER + '-copy.tar.gz'
+    },
+    function (err, stdout, stderr) {
+      if (err !== null) {
+        grunt.log.error("Failed downloading site archive.");
+        grunt.log.error(err);
+        clearInterval(msg);
+        done(false);
+      }
+      else {
+        clearInterval(msg);
+        done();
+      }
     });
+
   });
 
   /**
@@ -161,7 +180,7 @@ module.exports = function(grunt) {
     scp.send({
       file: fp,
       user: sunet,
-      host: 'sites1.stanford.edu',
+      host: 'sites2.stanford.edu',
       path: '/afs/ir/group/webservices/backups/' + sunet + '-sync.tar.gz'
     }, function (err, stdout, stderr) {
       if (err !== null) {
