@@ -3,7 +3,7 @@
     "php":   "/usr/local/bin/php",
     "mysql": "/usr/local/bin/mysql",
     "behat": "/usr/local/bin/behat",
-    "drush": "/usr/local/bin/drush"
+    "drush": "./drush/drush"
   },
   "build": {
     "webserver_root": "/Applications/MAMP/htdocs/",
