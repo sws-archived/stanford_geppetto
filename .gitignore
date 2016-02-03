@@ -2,6 +2,8 @@ node_modules
 stanford-jumpstart-deployer
 linky_clicky
 configure.json
+behat
+drush
 
 # Numerous always-ignore extensions
 *.diff

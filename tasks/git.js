@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   grunt.registerTask(
     "clone:repos",
     "Get a fresh copy of the git repositories used by this tool",
-    ["clean:gitrepos", "gitclone:deployer", "gitclone:linkyclicky"]
+    ["clean:gitrepos", "gitclone:deployer", "gitclone:linkyclicky", "gitclone:behat3"]
   );
 
 
@@ -36,6 +36,15 @@ module.exports = function(grunt) {
     ["clean:deployer", "gitclone:deployer"]
   );
 
+
+  /**
+   * Clone the deployer repo.
+   */
+  grunt.registerTask(
+    'clone:drushpatched',
+    "Get a fresh copy of the drush repo from sherakama",
+    ["clean:drushpatched", "gitclone:drushpatched"]
+  );
 
   /**
    * Pull the latest branch from the deployer.
