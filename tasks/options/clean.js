@@ -14,8 +14,11 @@ module.exports = {
   linkyclicky: {
     src: ["linky_clicky"]
   },
+  drushpatched: {
+    src: ["drush"]
+  },
   gitrepos: {
-    src: ["stanford-jumpstart-deployer", "linky_clicky"]
+    src: ["stanford-jumpstart-deployer", "linky_clicky", "drush"]
   },
   sitesclone: {
     src: ["<%= sites.webserver_root %><%= build.dest %>"]

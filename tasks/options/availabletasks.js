@@ -11,6 +11,8 @@ module.exports = {
         'build:make',
         'build:upgrade',
         'clone:linky-clicky',
+        'clone:deployer',
+        'clone:drushpatched',
         'clone:repos',
         'pull:deployer',
         'shell',
@@ -31,6 +33,7 @@ module.exports = {
         'Git and repository management': [
           'clone:deployer',
           'clone:linky-clicky',
+          'clone:drushpatched',
           'clone:repos',
           'pull:deployer',
         ],

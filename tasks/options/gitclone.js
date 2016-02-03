@@ -15,5 +15,12 @@ module.exports = {
       branch: "behat3",
       directory: "linky_clicky"
     }
+  },
+  drushpatched: {
+    options: {
+      repository: "git@github.com:sherakama/drush",
+      branch: "patched",
+      directory: "drush"
+    }
   }
 };
