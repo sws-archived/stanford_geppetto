@@ -67,7 +67,7 @@ var cf = {
           config: 'build.branch',
           type: 'input',
           message: "What branch do you want to build with?",
-          default: "7.x-4.x"
+          default: "7.x-5.x"
         }
       ]
     }
