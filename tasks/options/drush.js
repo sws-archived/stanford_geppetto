@@ -140,6 +140,7 @@ module.exports = {
       "<%= build.product_name %>",
       "--root=<%= build.webserver_root %><%= build.dest %>",
       "--db-url=<%= build.dbtype %>://<%= build.dbuser %>:<%= build.dbpass %>@<%= build.dbwhere %>/<%= build.dbname %>",
+      "install_configure_form.itasks_extra_tasks=<%= build.environment %>",
       "-y"
     ]
   },
