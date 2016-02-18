@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     grunt.task.run("force:clean:build");
 
     // Legacy is for branch 7.x-4.x or less.
-    if (grunt.option("legacy")) {
+    if (grunt.option("legacy") || grunt.option("build-git-branch") == "7.x-4.x") {
       grunt.task.run("drush:deploy-legacy");
     }
     else {
