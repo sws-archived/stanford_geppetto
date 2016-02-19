@@ -65,8 +65,6 @@ module.exports = function(grunt) {
    * in or set in configure.json.
    */
   grunt.registerTask("config:sys-path", "Modify the system path for this execution.", function() {
-    //   process.env.PATH = "/usr/local/Cellar/php54/5.4.42/bin" + process.env.PATH;
-
     var system = grunt.config("system");
     var keys = Object.keys(system);
 

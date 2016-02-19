@@ -150,6 +150,11 @@ module.exports = function(grunt) {
 
     var base = grunt.option("baseurl");
 
+    if (typeof base !== "string") {
+      grunt.log.debug("WARNING: No base url provided. settings.php left alone.");
+      return;
+    }
+
     // Allow mods.
     grunt.task.run("force:chmod:settingsphp");
 
@@ -162,11 +167,6 @@ module.exports = function(grunt) {
       replacement: "",
       paths: [settings_path]
     });
-
-    if (typeof base !== "string") {
-      grunt.log.debug("WARNING: No base url provided. settings.php left alone.");
-      return;
-    }
 
     // Then take over the base path one.
     rreplace({
