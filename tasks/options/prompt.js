@@ -2,9 +2,8 @@
  * Prompt tasks
  *
  */
-
-var help = require("../util/helpers");
 var grunt = require("grunt");
+var help = require("../util/helpers");
 var helpers = new help(grunt);
 
 // Config variable is outside of wrapper so it can have dynamic input.
@@ -55,7 +54,10 @@ var cf = {
           config: 'build.dest',
           type: 'input',
           message: "What is the site directory name?",
-          default: grunt.config("build.dest")
+          default: grunt.config("build.dest"),
+          validate: function(value) {
+            return (value.length >= 1);
+          }
         }
       ]
     }
@@ -67,7 +69,10 @@ var cf = {
           config: 'build.branch',
           type: 'input',
           message: "What branch do you want to build with?",
-          default: "7.x-5.x"
+          default: "7.x-5.x",
+          validate: function(value) {
+            return (value.length >= 1);
+          }
         }
       ]
     }
@@ -79,7 +84,10 @@ var cf = {
           config: 'build.webserver_root',
           type: 'input',
           message: "What is your webserver root directory?",
-          default: "/var/www/"
+          default: "/var/www/",
+          validate: function(value) {
+            return (value.length >= 1);
+          }
         }
       ]
     }
@@ -91,7 +99,10 @@ var cf = {
           config: 'build.dbuser',
           type: 'input',
           message: "What is the database user name?",
-          default: "root"
+          default: "root",
+          validate: function(value) {
+            return (value.length >= 1);
+          }
         }
       ]
     }
@@ -103,7 +114,10 @@ var cf = {
           config: 'build.dbpass',
           type: 'input',
           message: "What is the database user password?",
-          default: "root"
+          default: "root",
+          validate: function(value) {
+            return (value.length >= 1);
+          }
         }
       ]
     }
@@ -115,7 +129,14 @@ var cf = {
           config: 'build.dbname',
           type: 'input',
           message: "What is the name of the database you are installing to?",
-          default: "jumpstart"
+          default: "jumpstart",
+          validate: function(value) {
+            var regex = new RegExp(/^([a-zA-Z0-9_]+)$/);
+            var valid = regex.test(value);
+            if (valid === true) { return true; }
+            value = null;
+            return "Database names can only contain letters, numbers and underscores (_)";
+          }
         }
       ]
     }
@@ -138,7 +159,14 @@ var cf = {
           config: 'sites.drush_alias',
           type: 'input',
           message: "What is your drush alias for the site you want to clone? eg: @sse.ds_jumpstart",
-          default: "@sse.ds_sws-build-jsv"
+          default: "@sse.ds_sws-build-jsv",
+          validate: function(value) {
+            var regex = new RegExp(/^@[a-z0-9-_.]/i);
+            var valid = regex.test(value);
+            if (valid === true) { return true; }
+            value = null;
+            return "please provide a valid alias name staring with @";
+          }
         }
       ]
     }
@@ -150,7 +178,14 @@ var cf = {
           config: 'local.local_drush_alias',
           type: 'input',
           message: "What is your drush alias for the site you want to clone FROM? eg: @jumpstart.dev",
-          default: "@jumpstart.dev"
+          default: "@jumpstart.dev",
+          validate: function(value) {
+            var regex = new RegExp(/^@[a-z0-9-_.]/i);
+            var valid = regex.test(value);
+            if (valid === true) { return true; }
+            value = null;
+            return "please provide a valid alias name staring with @";
+          }
         }
       ]
     }
@@ -162,7 +197,14 @@ var cf = {
           config: 'local.sites_drush_alias',
           type: 'input',
           message: "What is your drush alias for the site you want to clone TO? eg: @sse.ds_jumpstart",
-          default: "@sse.ds_sws-build-jsv"
+          default: "@sse.ds_sws-build-jsv",
+          validate: function(value) {
+            var regex = new RegExp(/^@[a-z0-9-_.]/i);
+            var valid = regex.test(value);
+            if (valid === true) { return true; }
+            value = null;
+            return "please provide a valid alias name staring with @";
+          }
         }
       ]
     }
@@ -173,7 +215,15 @@ var cf = {
         {
           config: 'sites.sunetid',
           type: 'input',
-          message: "What is your sunetid"
+          message: "What is your sunetid",
+          validate: function(value) {
+            if (value.length <= 0) { return false; }
+            var regex = new RegExp(/^[a-z0-9-_.]/i);
+            var valid = regex.test(value);
+            if (valid === true) { return true; }
+            value = null;
+            return "please provide a valid sunet id";
+          }
         }
       ]
     }
