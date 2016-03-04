@@ -74,7 +74,7 @@ module.exports = function(grunt) {
       if (broken.length > 1) {
         broken.pop();
         value = broken.join("/");
-        process.env.PATH = ":" + value + process.env.PATH;
+        process.env.PATH = value + ":" + process.env.PATH;
       }
     });
 
