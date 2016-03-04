@@ -222,7 +222,7 @@ var cf = {
             var valid = regex.test(value);
             if (valid === true) { return true; }
             value = null;
-            return "please provide a valid sunet id";
+            return "please provide a valid sunet id. eg: sheamck";
           }
         }
       ]
