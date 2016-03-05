@@ -36,4 +36,30 @@ module.exports = function(grunt) {
 
   });
 
+  /**
+   * Validate the local environment before running  tasks is usefull so that you
+   * don't make the user wait several minutes before something goes kaboom.
+   *
+   */
+  grunt.registerTask("validate-local-environment", "Run some tests to ensure the local environment is ready to have tasks performed on it.", function () {
+
+    // Check connection to database is available and either the database exists
+    // or user has permissions to create one.
+
+    if (grunt.config.dbtype == "mysql") {
+      grunt.task.run("shell:create-mysql-database");
+    }
+
+    // Check that local directory exists and/or is writable.
+    //
+    // Check that the final local directory is not the webroot directory.
+    //
+    // Check that /tmp can be written to.
+    //
+
+
+
+
+  });
+
 };
