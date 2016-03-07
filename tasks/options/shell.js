@@ -22,6 +22,6 @@ module.exports = {
     command: "SUNET=<%= sync.sunetid %> SHORTNAME=<%= local.sites_drush_alias %> ./scripts/sites-sync-to-sites.sh"
   },
   "create-mysql-database": {
-    command: "mysql -u<%= buildinstall.dbuser %> -p<%= buildinstall.dbpass %> -e \"CREATE DATABASE IF NOT EXISTS <%= buildinstall.dbname %>\""
+    command: "mysql -u<%= build.dbuser %> -p<%= build.dbpass %> -e \"CREATE DATABASE IF NOT EXISTS <%= build.dbname %>\""
   }
 };

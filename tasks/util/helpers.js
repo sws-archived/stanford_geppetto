@@ -139,7 +139,7 @@ function Helpers(grunt) {
         "environment":    grunt.option("build-environment"),
         "dest":           grunt.option("build-directory"),
         "branch":         grunt.option("build-git-branch"),
-        "webserver_root": grunt.option("build-webserver-root"),
+        "webserver_root": grunt.option("build-webserver-root")
       },
       "install": {
         "product":        grunt.option("build-product"),
@@ -168,7 +168,7 @@ function Helpers(grunt) {
       "sync": {
         "local_drush_alias": grunt.option("local-drush-alias"),
         "sites_drush_alias": grunt.option("sites-drush-alias"),
-        "sunetid":           grunt.option("sites-sunetid"),
+        "sunetid":           grunt.option("sites-sunetid")
       }
     };
   };

@@ -28,7 +28,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['availabletasks']);
 
-  // All other tasks should be registered in their own tasks. Please do not
+  // All other tasks should be registered in their own task file. Please do not
   // register tasks here.
 
 };
@@ -49,6 +49,7 @@ function loadConfig(path) {
 
   glob.sync('*', {cwd: path}).forEach(function(option) {
     key = option.replace(/\.js$/,'');
+    console.log(key);
     object[key] = require(path + option);
   });
 

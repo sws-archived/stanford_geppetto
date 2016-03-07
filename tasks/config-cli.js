@@ -18,7 +18,6 @@ module.exports = function(grunt) {
     var system = {
       "drush": "drush",
       "mysql": "mysql",
-      "behat": "behat",
       "php": "php"
     };
 

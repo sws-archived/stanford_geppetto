@@ -46,18 +46,21 @@ module.exports = function(grunt) {
     // Check connection to database is available and either the database exists
     // or user has permissions to create one.
 
-    if (grunt.config.dbtype == "mysql") {
-      grunt.task.run("shell:create-mysql-database");
-    }
+    // @Todo: Don't assume mysql...
+    grunt.task.run("shell:create-mysql-database");
 
     // Check that local directory exists and/or is writable.
-    //
-    // Check that the final local directory is not the webroot directory.
-    //
+    var fullpath = grunt.config("build.webserver_root") + grunt.config("build.dest");
+    if (grunt.file.isDir(fullpath)) {
+      grunt.task.run("chmod:build_dest");
+    }
+    // If the directory does not exist, check to see that the root directory is writable.
+    else {
+      grunt.task.run("chmod:webserver_root");
+    }
+
     // Check that /tmp can be written to.
     //
-
-
 
 
   });

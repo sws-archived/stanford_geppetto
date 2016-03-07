@@ -197,4 +197,18 @@ module.exports = function(grunt) {
 
   });
 
+/**
+   * Validate the sites environment before running  tasks is usefull so that you
+   * don't make the user wait several minutes before something goes kaboom.
+   *
+   */
+  grunt.registerTask("validate-sites-environment", "Run some tests to ensure the sites environment is ready to have tasks performed on it.", function () {
+
+    // Check for alias files
+    // Check for connection to sites2.stanford.edu
+    // Check for sunet id
+    //
+
+  });
+
 };

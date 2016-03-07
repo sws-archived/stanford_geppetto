@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build:make:install', 'Build and install a Drupal site.', function() {
     grunt.task.run("prompt-build-install");
     grunt.task.run("config:alter-build-install");
+    grunt.task.run("validate-local-environment");
     grunt.task.run("build:make:build");
     grunt.task.run("build:settings:baseurl");
     grunt.task.run("drush:install");
@@ -38,6 +39,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build:install', 'Install a Drupal site installation profile.', function() {
     grunt.task.run("prompt-drush-install");
     grunt.task.run("config:alter-build-install");
+    grunt.task.run("validate-local-environment");
     grunt.task.run("drush:install");
     grunt.task.run("finish-installation");
   });
@@ -107,6 +109,7 @@ module.exports = function(grunt) {
    */
   grunt.registerTask('sites:clone', 'Get a copy of a site from sites.', function() {
     grunt.task.run("prompt-sites-clone");
+    grunt.task.run("validate-local-environment");
     grunt.task.run("chmod:cleansitesclone");
     grunt.task.run("clean:sitesclone");
     grunt.task.run("drush:sitesard");

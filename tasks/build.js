@@ -21,8 +21,6 @@ module.exports = function(grunt) {
       grunt.task.run("build:make:environment");
     }
 
-    grunt.task.run("notify:buildmake");
-
   });
 
   /**
@@ -45,7 +43,6 @@ module.exports = function(grunt) {
 
     // Build the file!
     grunt.task.run("drush:environment");
-    grunt.task.run("force:notify:buildenvironment");
 
   });
 

@@ -24,8 +24,18 @@ module.exports = {
     ]
   },
   settingsphp: {
-    src:[
+    src: [
       '<%= build.webserver_root %><%= build.dest %>/**/settings.php'
+    ]
+  },
+  webserver_root: {
+    src: [
+      '<%= build.webserver_root %>'
+    ]
+  },
+  build_dest: {
+    src: [
+      '<%= build.webserver_root %><%= build.dest %>'
     ]
   }
 };
