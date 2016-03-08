@@ -197,17 +197,25 @@ module.exports = function(grunt) {
 
   });
 
-/**
-   * Validate the sites environment before running  tasks is usefull so that you
-   * don't make the user wait several minutes before something goes kaboom.
+  /**
+   * Validate the sites environment.
    *
+   * Validate before running  tasks is usefull so that you
+   * don't make the user wait several minutes before something goes kaboom.
    */
   grunt.registerTask("validate-sites-environment", "Run some tests to ensure the sites environment is ready to have tasks performed on it.", function () {
 
-    // Check for alias files
-    // Check for connection to sites2.stanford.edu
-    // Check for sunet id
-    //
+    // Check for sunet value.
+    var sunet = grunt.config("sites.sunetid");
+    if (sunet.length <= 0) {
+      grunt.fail.fatal("NO SUNET ID PROVIDED");
+    }
+
+    // Check for connection to sites2.stanford.edu.
+    grunt.task.run("shell:check-sites2");
+
+    // Check for alias files.
+    grunt.task.run("drush:site-alias-st");
 
   });
 

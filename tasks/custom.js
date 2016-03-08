@@ -110,6 +110,7 @@ module.exports = function(grunt) {
   grunt.registerTask('sites:clone', 'Get a copy of a site from sites.', function() {
     grunt.task.run("prompt-sites-clone");
     grunt.task.run("validate-local-environment");
+    grunt.task.run("validate-sites-environment");
     grunt.task.run("chmod:cleansitesclone");
     grunt.task.run("clean:sitesclone");
     grunt.task.run("drush:sitesard");
@@ -127,6 +128,9 @@ module.exports = function(grunt) {
 
     // Prompt for the drush aliases variables.
     grunt.task.run("prompt-local-to-sites");
+
+    // Validate the connection to the sites environment.
+    grunt.task.run("validate-sites-environment");
 
     // Create a local site archive.
     grunt.task.run("drush:localard");

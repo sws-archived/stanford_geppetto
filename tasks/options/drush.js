@@ -173,5 +173,11 @@ module.exports = {
       "--destination=" + process.env.TMPDIR + "sites-deploy.tar.gz",
       "--overwrite"
     ]
+  },
+  "site-alias-st": {
+    args: [
+      '<%= sites.drush_alias %>',
+      "st",
+    ]
   }
 };
