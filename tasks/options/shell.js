@@ -25,9 +25,9 @@ module.exports = {
     command: "mysql -u<%= build.dbuser %> -p<%= build.dbpass %> -e \"CREATE DATABASE IF NOT EXISTS <%= build.dbname %>\""
   },
   "check-sites1": {
-    command: "ssh <%= sites.sunetid %>@sites1.stanford.edu"
+    command: "ssh <%= sites.sunetid %>@sites1.stanford.edu exit"
   },
   "check-sites2": {
-    command: "ssh <%= sites.sunetid %>@sites2.stanford.edu"
+    command: "ssh <%= sites.sunetid %>@sites2.stanford.edu exit"
   }
 };
