@@ -17,11 +17,17 @@ if [ ! -d $REPOPATH ]; then
   git clone $GITREMOTE $REPOPATH
 fi
 
-# Remove local branch if we have one.
-GITREMOVE="$(git branch -D $GITCHECKOUT)"
-GITREMOVE2="$(git tag -d $GITCHECKOUT)"
-
 cd $REPOPATH
+
+# Store any changes to the dirty branch if there are any.
+MSG=$(git stash save "Auto-stash by Geppetto script")
+NON="No local changes to save"
+
 git fetch $GITREMOTENAME
 git fetch $GITREMOTENAME --tags
-git checkout $GITCHECKOUT
+git pull --rebase
+git checkout $GITCHECKOUT --quiet
+
+if [[ "$MSG" != "$NON" ]]; then
+  git stash pop --quiet
+fi
