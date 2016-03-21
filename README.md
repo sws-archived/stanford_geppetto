@@ -124,7 +124,7 @@ Get a list of all of the available functions. If you are going to remember one f
 ####`grunt build:install` 
 Install a Drupal site installation profile. An equivalent function to `drush si`.
 
-Options avilable:
+Options available:
 
 ```
 --build-product  
@@ -143,7 +143,7 @@ Options avilable:
 ####`grunt build:make`
 Deploy Drupal site's files. More or less a fancier `drush make`
 
-Options avilable:
+Options available:
 
 ```
 --build-product  
@@ -158,7 +158,7 @@ Options avilable:
 ####`grunt build:make:install`
 Build and install a Drupal site. 
 
-Options avilable:
+Options available:
 
 ```
 --build-product  
@@ -198,7 +198,7 @@ Update a site that has been cloned from the Stanford sites environment to your l
 function is slightly different than the `build:upgrade` function in that it has some specific to sites
 functionality that allow for a smoother upgrade and re-sync to sites process.
 
-Options avilable:
+Options available:
 
 ```
 --features-revert-all
@@ -220,7 +220,7 @@ configuration to get it to work.
 ####`grunt sites:clone`
 Get a copy of a site from sites. 
 
-Options avilable:
+Options available:
 
 ```
 --sites-drush-alias
@@ -238,7 +238,7 @@ Options avilable:
 ####`grunt sites:sync-up`
 Clone a local site up to the sites environment replacing what is currently on the sites environment.
 
-Options avilable:
+Options available:
 
 ```
 --local-drush-alias
@@ -349,12 +349,3 @@ Contribution / Collaboration
 ----
 
 You are welcome to contribute functionality, bug fixes, or documentation to this module. If you would like to suggest a fix or new functionality you may add a new issue to the GitHub issue queue or you may fork this repository and submit a pull request. For more help please see [GitHub's article on fork, branch, and pull requests](https://help.github.com/articles/using-pull-requests)
-
-TODO
-----
-
-* Run behat tests with suites on deploy (probably too complicated to do in this project. Needs integration with other projects.)
-* Drush site alias integration: Generate sites.aliases.drushrc.php for all the sites stuff.
-* Remote build and sync (sites?)
-* Clone from remote (sites and anchorage)
-* Systems check: Check to see all software and values (mysql/php/apache) are enough to run Drupal.
