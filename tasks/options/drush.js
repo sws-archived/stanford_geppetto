@@ -141,6 +141,9 @@ module.exports = {
       "--root=<%= build.webserver_root %><%= build.dest %>",
       "--db-url=<%= build.dbtype %>://<%= build.dbuser %>:<%= build.dbpass %>@<%= build.dbwhere %>/<%= build.dbname %>",
       "install_configure_form.itasks_extra_tasks=<%= build.environment %>",
+      "install_configure_form.stanford_sites_requester_sunetid=sheamck",
+      "install_configure_form.stanford_sites_requester_name='Shea McKinney'",
+      "install_configure_form.stanford_sites_requester_email='shemck@stanford.edu'",
       "-y"
     ]
   },
