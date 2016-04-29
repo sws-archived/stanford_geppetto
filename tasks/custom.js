@@ -129,6 +129,9 @@ module.exports = function(grunt) {
     // Prompt for the drush aliases variables.
     grunt.task.run("prompt-local-to-sites");
 
+    // Patch up variables from prompt.
+    grunt.task.run("sites:prompt-local-to-sites-patch-up");
+
     // Validate the connection to the sites environment.
     grunt.task.run("validate-sites-environment");
 

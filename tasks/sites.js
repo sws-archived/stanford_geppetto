@@ -219,4 +219,14 @@ module.exports = function(grunt) {
 
   });
 
+    /**
+     * Moves some variables around so the predefined tasks can run them.
+     */
+   grunt.registerTask('sites:prompt-local-to-sites-patch-up', 'patch up some variables.', function() {
+
+     alias = grunt.config("local.sites_drush_alias");
+     grunt.config("sites.drush_alias", alias);
+
+   });
+
 };
