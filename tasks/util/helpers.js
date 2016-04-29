@@ -155,6 +155,7 @@ function Helpers(grunt) {
       "upgrade": {
         "product":        grunt.option("build-product"),
         "type":           grunt.option("build-type"),
+        "branch":         grunt.option("build-git-branch"),
         "dest":           grunt.option("build-directory"),
         "webserver_root": grunt.option("build-webserver-root")
       },
