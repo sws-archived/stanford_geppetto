@@ -164,3 +164,6 @@ $drush sqlc < $DBDUMP
 echo "Rebuilding registry"
 $drush rr
 $drush uli
+
+# This got left behind :(
+$drush webauth-write-htaccess
