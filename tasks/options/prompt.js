@@ -68,7 +68,7 @@ var cf = {
         {
           config: 'build.branch',
           type: 'input',
-          message: "What branch do you want to build with?",
+          message: "What branch of the deployer do you want to build with?",
           default: "7.x-5.x",
           validate: function(value) {
             return (value.length >= 1);
