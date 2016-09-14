@@ -284,6 +284,9 @@ build-environment
 	in the drush make build and which configuration options are run during site installation.
 	Options are: local, sites, anchorage
 
+build-type
+	The build type you want. IE: "development" or "production".
+
 build-directory
 	The Drupal root folder name. The directory that will contain the Drupal website build. 
 	For example: If you want to build a site to /var/www/mysitename the build-directory
