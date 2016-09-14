@@ -16,6 +16,7 @@ function Helpers(grunt) {
       { name:'JSV',         value: "jumpstart" },
       { name:'JSPlus',      value: "jumpstart-plus" },
       { name:'JSA',         value: "jumpstart-academic" },
+      { name:'JSL',         value: "jumpstart-lab" },
       { name:'JSVPSA',      value: "jumpstart-vpsa" },
       { name:'JSE',         value: "jumpstart-engineering" },
       { name:'DrupalCamp',  value: "drupalcamp" },

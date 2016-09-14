@@ -274,7 +274,7 @@ system-behat
 
 build-product  
   	Which product are you installing. 
-  	Options are: jumpstart, jumpstart-plus, jumpstart-academic, jumpstart-vpsa, jumpstart-engineering
+  	Options are: jumpstart, jumpstart-plus, jumpstart-academic, jumpstart-lab, jumpstart-vpsa, jumpstart-engineering
 
 build-environment
 	What environment are you building to? Environment specifics define which modules are included
