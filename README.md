@@ -73,6 +73,9 @@ Psuedo Code for configure.json. Do not use this as real configuration.
     changes how, and what gets installed on your build site. For example, local builds come
     with debugging modules. Site builds come with webauth modules and configuration.
     
+    "type":			"development"
+    # What type of build you want. Your options are "development" and "production"
+    
     "dbtype": 			"mysql",
     # The database type. Currently only supports mysql and pgsql.
     
