@@ -143,7 +143,7 @@ module.exports = {
       "install_configure_form.itasks_extra_tasks=<%= build.environment %>",
       "install_configure_form.stanford_sites_requester_sunetid=sheamck",
       "install_configure_form.stanford_sites_requester_name='Shea McKinney'",
-      "install_configure_form.stanford_sites_requester_email='shemck@stanford.edu'",
+      "install_configure_form.stanford_sites_requester_email='sheamck@stanford.edu'",
       "-y"
     ]
   },
