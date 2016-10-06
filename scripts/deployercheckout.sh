@@ -3,7 +3,7 @@
 # with the make files. Passed in variable can be a specific branch or tag.
 SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPOPATH=$SCRIPTPATH"/../stanford-jumpstart-deployer"
-GITREMOTE="git@github.com:SU-SWS/stanford-jumpstart-deployer.git"
+GITREMOTE="https://github.com/SU-SWS/stanford-jumpstart-deployer"
 GITREMOTENAME="origin"
 GITBRANCH="proboci"
 
