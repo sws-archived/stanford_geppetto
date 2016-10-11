@@ -1,6 +1,8 @@
 #!/bin/bash
 # This script is responsible for pulling and syncing up the git repo
 # with the make files. Passed in variable can be a specific branch or tag.
+echo $USER
+echo printenv
 SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPOPATH=$SCRIPTPATH"/../stanford-jumpstart-deployer"
 GITREMOTE="https://github.com/SU-SWS/stanford-jumpstart-deployer"
