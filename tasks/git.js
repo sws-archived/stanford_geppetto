@@ -56,7 +56,3 @@ module.exports = function(grunt) {
   );
 
 };
-  "Pull the latest deployer branch", ["shell:deployercheckout"]
-    );
-
-};
