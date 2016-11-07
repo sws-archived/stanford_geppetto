@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   grunt.registerTask(
     "clone:repos",
     "Get a fresh copy of the git repositories used by this tool",
-    ["clean:gitrepos", "gitclone:deployer", "gitclone:linkyclicky", "gitclone:5.x"]
+    ["clean:gitrepos", "gitclone:deployer", "gitclone:linkyclicky", "gitclone:drushpatched"]
   );
 
 
