@@ -12,7 +12,7 @@ module.exports = {
   linkyclicky: {
     options: {
       repository: "git@github.com:SU-SWS/linky_clicky.git",
-      branch: "behat3",
+      branch: "5.x",
       directory: "linky_clicky"
     }
   },
