@@ -4,7 +4,7 @@
 module.exports = {
   options: {
     stderr: false,
-    execOptions: { "maxBuffer": NaN }
+    execOptions: { "maxBuffer": 30720000 }
   },
   sayelo: {
     command: "echo 'hello'"
